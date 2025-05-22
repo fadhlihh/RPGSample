@@ -19,8 +19,6 @@ namespace Fadhli.Game.Module
         [SerializeField]
         private float _rotationSpeed = 1f;
 
-        private Character _character;
-
         public float MaxLockDistance { get { return _maxLockDistance; } }
         public bool IsLockTarget { get; private set; }
         public EnemyCharacter Target { get; private set; }
@@ -48,7 +46,6 @@ namespace Fadhli.Game.Module
             {
                 _targetGroupCamera = FindObjectOfType<CinemachineTargetGroup>();
             }
-            _character = GetComponent<Character>();
         }
 
         public void OnLockTargetInput()
@@ -81,7 +78,7 @@ namespace Fadhli.Game.Module
             IsLockTarget = false;
             OnStopLockTarget?.Invoke();
             Target = null;
-            _camera.m_XAxis.Value = _character.transform.eulerAngles.y;
+            _camera.m_XAxis.Value = transform.eulerAngles.y;
             _lockCamera.Priority = 9;
         }
 
@@ -121,8 +118,8 @@ namespace Fadhli.Game.Module
         {
             if (IsLockTarget)
             {
-                PlayerCharacter _playerCharacter = _character as PlayerCharacter;
-                if (!_playerCharacter.IsRolling)
+                bool isRolling = GetComponent<IRolling>() != null ? GetComponent<IRolling>().IsRolling : false;
+                if (isRolling)
                 {
                     // transform.LookAt(Target.transform.position);
                     Vector3 toTarget = Target.transform.position - transform.position;

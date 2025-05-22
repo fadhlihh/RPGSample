@@ -12,6 +12,7 @@ namespace Fadhli.Game
         public Action OnRollInput;
         public Action<bool> OnSprintInput;
         public Action OnLightAttackInput;
+        public Action OnHeavyAttackInput;
         public Action OnLockTargetInput;
 
         private IA_Default _inputAction;
@@ -74,6 +75,14 @@ namespace Fadhli.Game
             if (context.performed)
             {
                 OnLockTargetInput?.Invoke();
+            }
+        }
+
+        public void OnHeavyAttack(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnHeavyAttackInput?.Invoke();
             }
         }
     }

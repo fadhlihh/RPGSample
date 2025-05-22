@@ -13,6 +13,8 @@ namespace Fadhli.Game.Module
         public UnityEvent OnEndAttackingAnimation;
         public UnityEvent OnBeginTraceHitAnimation;
         public UnityEvent OnEndTraceHitAnimation;
+        public UnityEvent OnBeginHeavyAttackingAnimation;
+        public UnityEvent OnEndHeavyAttackingAnimation;
 
         public void OnCharacterBeginRoll()
         {
@@ -41,6 +43,22 @@ namespace Fadhli.Game.Module
             _animator.SetBool("IsAttacking", false);
             _animator.applyRootMotion = false;
             OnEndAttackingAnimation?.Invoke();
+        }
+
+        public void OnCharacterBeginHeavyAttack()
+        {
+            _animator.applyRootMotion = true;
+            _animator.SetBool("IsHeavyAttack", true);
+            _animator.SetBool("IsAttacking", true);
+            OnBeginHeavyAttackingAnimation?.Invoke();
+        }
+
+        public void OnCharacterEndHeavyAttack()
+        {
+            _animator.SetBool("IsAttacking", false);
+            _animator.SetBool("IsHeavyAttack", false);
+            _animator.applyRootMotion = false;
+            OnEndHeavyAttackingAnimation?.Invoke();
         }
 
         public void OnStartTracingHit()

@@ -64,6 +64,15 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""HeavyAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""9237db87-b63e-4d23-805c-f601188bf6b9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""LockTarget"",
                     ""type"": ""Button"",
                     ""id"": ""5a6395cd-7148-41da-bfec-c51ba445ec3f"",
@@ -227,6 +236,17 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
                     ""action"": ""LockTarget"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""723163fd-33fa-44c4-849a-7068af9606e7"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HeavyAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -267,6 +287,7 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         m_General_Roll = m_General.FindAction("Roll", throwIfNotFound: true);
         m_General_Sprint = m_General.FindAction("Sprint", throwIfNotFound: true);
         m_General_LightAttack = m_General.FindAction("LightAttack", throwIfNotFound: true);
+        m_General_HeavyAttack = m_General.FindAction("HeavyAttack", throwIfNotFound: true);
         m_General_LockTarget = m_General.FindAction("LockTarget", throwIfNotFound: true);
     }
 
@@ -333,6 +354,7 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
     private readonly InputAction m_General_Roll;
     private readonly InputAction m_General_Sprint;
     private readonly InputAction m_General_LightAttack;
+    private readonly InputAction m_General_HeavyAttack;
     private readonly InputAction m_General_LockTarget;
     public struct GeneralActions
     {
@@ -342,6 +364,7 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         public InputAction @Roll => m_Wrapper.m_General_Roll;
         public InputAction @Sprint => m_Wrapper.m_General_Sprint;
         public InputAction @LightAttack => m_Wrapper.m_General_LightAttack;
+        public InputAction @HeavyAttack => m_Wrapper.m_General_HeavyAttack;
         public InputAction @LockTarget => m_Wrapper.m_General_LockTarget;
         public InputActionMap Get() { return m_Wrapper.m_General; }
         public void Enable() { Get().Enable(); }
@@ -364,6 +387,9 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
             @LightAttack.started += instance.OnLightAttack;
             @LightAttack.performed += instance.OnLightAttack;
             @LightAttack.canceled += instance.OnLightAttack;
+            @HeavyAttack.started += instance.OnHeavyAttack;
+            @HeavyAttack.performed += instance.OnHeavyAttack;
+            @HeavyAttack.canceled += instance.OnHeavyAttack;
             @LockTarget.started += instance.OnLockTarget;
             @LockTarget.performed += instance.OnLockTarget;
             @LockTarget.canceled += instance.OnLockTarget;
@@ -383,6 +409,9 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
             @LightAttack.started -= instance.OnLightAttack;
             @LightAttack.performed -= instance.OnLightAttack;
             @LightAttack.canceled -= instance.OnLightAttack;
+            @HeavyAttack.started -= instance.OnHeavyAttack;
+            @HeavyAttack.performed -= instance.OnHeavyAttack;
+            @HeavyAttack.canceled -= instance.OnHeavyAttack;
             @LockTarget.started -= instance.OnLockTarget;
             @LockTarget.performed -= instance.OnLockTarget;
             @LockTarget.canceled -= instance.OnLockTarget;
@@ -427,6 +456,7 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         void OnRoll(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnLightAttack(InputAction.CallbackContext context);
+        void OnHeavyAttack(InputAction.CallbackContext context);
         void OnLockTarget(InputAction.CallbackContext context);
     }
 }

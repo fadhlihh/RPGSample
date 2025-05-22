@@ -28,9 +28,11 @@ namespace Fadhli.Game.Module
         private HashSet<Collider> _alreadyHit = new HashSet<Collider>();
 
         public UnityEvent<int> OnAttack;
+        public UnityEvent OnHeavyAttack;
 
         public int Combo { get; private set; } = 1;
         public bool IsAttacking { get; set; }
+        public bool IsHeavyAttack { get; set; }
         public bool IsTracingHit { get; private set; }
         public HashSet<Collider> AlreadyHit { get { return _alreadyHit; } }
 
@@ -51,17 +53,7 @@ namespace Fadhli.Game.Module
             _character = GetComponent<Character>();
         }
 
-        private void OnEnable()
-        {
-            InputManager.Instance.OnLightAttackInput += Attack;
-        }
-
-        private void OnDisable()
-        {
-            InputManager.Instance.OnLightAttackInput -= Attack;
-        }
-
-        private void Attack()
+        public void Attack()
         {
             bool isRolling = GetComponent<IRolling>() != null ? GetComponent<IRolling>().IsRolling : false;
             if (!IsAttacking && _character.CharacterMovement.IsGrounded && !isRolling)
@@ -69,6 +61,18 @@ namespace Fadhli.Game.Module
                 IsAttacking = true;
                 OnAttack?.Invoke(Combo);
                 CountCombo();
+            }
+        }
+
+        public void HeavyAttack()
+        {
+            bool isRolling = GetComponent<IRolling>() != null ? GetComponent<IRolling>().IsRolling : false;
+            if (!IsAttacking && _character.CharacterMovement.IsGrounded && !isRolling)
+            {
+                Debug.Log("Tes");
+                IsAttacking = true;
+                IsHeavyAttack = true;
+                OnHeavyAttack?.Invoke();
             }
         }
 

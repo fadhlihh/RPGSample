@@ -341,6 +341,48 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnBeginHeavyAttackingAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndHeavyAttackingAnimation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5939338231251299813}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterAttack, Assembly-CSharp
+        m_MethodName: set_IsAttacking
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5939338231251299813}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterAttack, Assembly-CSharp
+        m_MethodName: set_IsHeavyAttack
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5939338231251299811}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterMovement, Assembly-CSharp
+        m_MethodName: set_IsAbleToMove
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &151050108
 GameObject:
   m_ObjectHideFlags: 3
@@ -412,7 +454,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151050108}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.098537624, y: -0.0000000042806607, z: 4.238689e-10, w: 0.99513334}
+  m_LocalRotation: {x: 0.09853762, y: 0.000000004280661, z: -4.238689e-10, w: 0.99513334}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -647,7 +689,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.098537624, y: -0.000000008561321, z: 8.477379e-10, w: 0.99513334}
+  m_LocalRotation: {x: 0.09853761, y: 0.000000008561322, z: -8.477379e-10, w: 0.99513334}
   m_LocalPosition: {x: 0, y: 1.7, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -946,8 +988,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461955880}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0820661, y: -0.000000016034726, z: 0.000000001320361, w: 0.9966269}
-  m_LocalPosition: {x: 0.00000031744563, y: 3.2357855, z: -9.865303}
+  m_LocalRotation: {x: 0.08199369, y: 0.000000003196623, z: -2.6298846e-10, w: 0.9966329}
+  m_LocalPosition: {x: -0.000000063285924, y: 3.2343524, z: -9.8655405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1070,18 +1112,6 @@ PrefabInstance:
       value: Sword(3)_DH
       objectReference: {fileID: 0}
     - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1120,10 +1150,6 @@ PrefabInstance:
     - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -16.606
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1281,7 +1307,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935043977}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23877859, y: 0.000000018680861, z: -0.00000000459346, w: 0.97107404}
+  m_LocalRotation: {x: 0.23877859, y: -0.000000018680861, z: 0.00000000459346, w: 0.97107404}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1728,15 +1754,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6814,8 +6840,8 @@ MonoBehaviour:
   _maxCombo: 4
   _comboDuration: 5
   _swordSocket: {fileID: 339566573}
-  _hitboxSize: {x: 0.1, y: 0.1, z: 0.82}
-  _hitboxOffset: {x: 0, y: 0, z: 0.57}
+  _hitboxSize: {x: 0.1, y: 0.1, z: 1.15}
+  _hitboxOffset: {x: 0, y: 0, z: 0.71}
   _hitableLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -6838,6 +6864,33 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Fadhli.Game.Module.PlayerAnimation, Assembly-CSharp
         m_MethodName: OnCharacterBeginAttack
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHeavyAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5939338231251299811}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterMovement, Assembly-CSharp
+        m_MethodName: set_IsAbleToMove
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 101737877}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.PlayerAnimation, Assembly-CSharp
+        m_MethodName: OnCharacterBeginHeavyAttack
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

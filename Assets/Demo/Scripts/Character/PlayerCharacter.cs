@@ -40,6 +40,8 @@ namespace Fadhli.Game.Module
             InputManager.Instance.OnMoveInput += DirectionalCharacterMovement.AddMovementInput;
             InputManager.Instance.OnSprintInput += DirectionalCharacterMovement.Sprint;
             InputManager.Instance.OnRollInput += Roll;
+            InputManager.Instance.OnLightAttackInput += CharacterAttack.Attack;
+            InputManager.Instance.OnHeavyAttackInput += CharacterAttack.HeavyAttack;
         }
 
         private void OnDisable()
@@ -48,6 +50,8 @@ namespace Fadhli.Game.Module
             InputManager.Instance.OnMoveInput -= DirectionalCharacterMovement.AddMovementInput;
             InputManager.Instance.OnSprintInput -= DirectionalCharacterMovement.Sprint;
             InputManager.Instance.OnRollInput -= Roll;
+            InputManager.Instance.OnLightAttackInput -= CharacterAttack.Attack;
+            InputManager.Instance.OnHeavyAttackInput -= CharacterAttack.HeavyAttack;
         }
 
         public void Roll()
