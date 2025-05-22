@@ -19,6 +19,8 @@ namespace Fadhli.Game.Module
         public float GravityScale { get { return _gravityScale; } set { _gravityScale = value; } }
         public bool IsCrouch { get; protected set; }
         public Vector3 MoveDirection { get; protected set; }
+        public Vector3 NormalizedVelocity { get { return MoveDirection * _currentSpeed; } }
+        public Vector3 NormalizedVelocityXZ { get { return new Vector3(NormalizedVelocity.x, 0, NormalizedVelocity.z); } }
 
         public UnityEvent OnCharacterRoll;
 

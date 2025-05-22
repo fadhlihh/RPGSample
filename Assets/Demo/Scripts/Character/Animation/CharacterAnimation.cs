@@ -32,6 +32,8 @@ namespace Fadhli
             if (_ownerCharacter.CharacterMovement != null)
             {
                 _animator.SetFloat("Velocity", _ownerCharacter.CharacterMovement.VelocityXZ.magnitude);
+                _animator.SetFloat("VelocityX", _ownerCharacter.CharacterMovement.VelocityXZ.x);
+                _animator.SetFloat("VelocityZ", _ownerCharacter.CharacterMovement.VelocityXZ.z);
                 _animator.SetFloat("VelocityY", _ownerCharacter.CharacterMovement.VelocityY);
                 _animator.SetBool("IsFalling", _ownerCharacter.CharacterMovement.IsFalling);
             }

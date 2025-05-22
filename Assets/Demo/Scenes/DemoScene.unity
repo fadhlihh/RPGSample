@@ -988,8 +988,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461955880}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08199369, y: 0.000000003196623, z: -2.6298846e-10, w: 0.9966329}
-  m_LocalPosition: {x: -0.000000063285924, y: 3.2343524, z: -9.8655405}
+  m_LocalRotation: {x: 0.0819937, y: 0.000000004272366, z: -3.514906e-10, w: 0.9966329}
+  m_LocalPosition: {x: -0.00000008458321, y: 3.2343524, z: -9.8655405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1307,7 +1307,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935043977}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23877859, y: -0.000000018680861, z: 0.00000000459346, w: 0.97107404}
+  m_LocalRotation: {x: 0.23877859, y: 0.000000018680861, z: -0.00000000459346, w: 0.97107404}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6932,6 +6932,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 101737877}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.PlayerAnimation, Assembly-CSharp
+        m_MethodName: OnBeginLockTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnStopLockTarget:
     m_PersistentCalls:
       m_Calls:
@@ -6940,6 +6952,18 @@ MonoBehaviour:
           Assembly-CSharp
         m_MethodName: set_OrientRotationToMovement
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 101737877}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.PlayerAnimation, Assembly-CSharp
+        m_MethodName: OnEndLockTarget
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

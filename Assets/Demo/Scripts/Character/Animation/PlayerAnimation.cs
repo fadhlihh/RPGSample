@@ -70,5 +70,27 @@ namespace Fadhli.Game.Module
         {
             OnEndTraceHitAnimation?.Invoke();
         }
+
+        public void OnBeginLockTarget()
+        {
+            _animator.SetBool("IsLockTarget", true);
+        }
+
+        public void OnEndLockTarget()
+        {
+            _animator.SetBool("IsLockTarget", false);
+        }
+
+        protected void Update()
+        {
+            base.Update();
+            if (_ownerCharacter.CharacterMovement != null)
+            {
+                ControllerCharacterMovement controllerMovement = _ownerCharacter.CharacterMovement as ControllerCharacterMovement;
+                _animator.SetFloat("Velocity", controllerMovement.NormalizedVelocity.magnitude);
+                _animator.SetFloat("VelocityX", controllerMovement.NormalizedVelocityXZ.x);
+                _animator.SetFloat("VelocityZ", controllerMovement.NormalizedVelocityXZ.z);
+            }
+        }
     }
 }
