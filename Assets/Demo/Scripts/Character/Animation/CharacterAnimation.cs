@@ -1,7 +1,7 @@
 using Fadhli.Game.Module;
 using UnityEngine;
 
-namespace Fadhli
+namespace Fadhli.Game.Module
 {
     [RequireComponent(typeof(Character))]
     public class CharacterAnimation : MonoBehaviour

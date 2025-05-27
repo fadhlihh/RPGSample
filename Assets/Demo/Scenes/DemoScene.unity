@@ -287,8 +287,56 @@ MonoBehaviour:
   OnEndAttackingAnimation:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5939338231251299813}
-        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterAttack, Assembly-CSharp
+      - m_Target: {fileID: 5939338231251299811}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterMovement, Assembly-CSharp
+        m_MethodName: set_IsAbleToMove
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 5939338231251299815}
+        m_TargetAssemblyTypeName: PlayerWeaponEquipmentManager, Assembly-CSharp
+        m_MethodName: set_IsAttacking
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnBeginTraceHitAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndTraceHitAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBeginHeavyAttackingAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndHeavyAttackingAnimation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5939338231251299815}
+        m_TargetAssemblyTypeName: PlayerWeaponEquipmentManager, Assembly-CSharp
+        m_MethodName: set_IsHeavyAttack
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5939338231251299815}
+        m_TargetAssemblyTypeName: PlayerWeaponEquipmentManager, Assembly-CSharp
         m_MethodName: set_IsAttacking
         m_Mode: 6
         m_Arguments:
@@ -311,70 +359,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  OnBeginTraceHitAnimation:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5939338231251299813}
-        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterAttack, Assembly-CSharp
-        m_MethodName: StartTraceHit
+      - m_Target: {fileID: 5939338231251299815}
+        m_TargetAssemblyTypeName: PlayerWeaponEquipmentManager, Assembly-CSharp
+        m_MethodName: EndHeavyAttack
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnEndTraceHitAnimation:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5939338231251299813}
-        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterAttack, Assembly-CSharp
-        m_MethodName: StopTraceHit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnBeginHeavyAttackingAnimation:
-    m_PersistentCalls:
-      m_Calls: []
-  OnEndHeavyAttackingAnimation:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5939338231251299813}
-        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterAttack, Assembly-CSharp
-        m_MethodName: set_IsAttacking
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5939338231251299813}
-        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterAttack, Assembly-CSharp
-        m_MethodName: set_IsHeavyAttack
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5939338231251299811}
-        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterMovement, Assembly-CSharp
-        m_MethodName: set_IsAbleToMove
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -602,6 +590,38 @@ Transform:
   - {fileID: 935043979}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &267664624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 267664625}
+  m_Layer: 0
+  m_Name: BowSocket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &267664625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267664624}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.45899037, y: -0.13067769, z: -0.11283096, w: 0.8715047}
+  m_LocalPosition: {x: -0.125, y: -0.16, z: -0.26}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 4620179301663401}
+  m_Father: {fileID: 6873895599117489595}
+  m_LocalEulerAnglesHint: {x: 50.402, y: -31.322, z: -29.785}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,7 +823,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 867036151}
+  - {fileID: 1211672552}
   m_Father: {fileID: 6873895599117489595}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410087039
@@ -988,8 +1008,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461955880}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0819937, y: 0.000000004272366, z: -3.514906e-10, w: 0.9966329}
-  m_LocalPosition: {x: -0.00000008458321, y: 3.2343524, z: -9.8655405}
+  m_LocalRotation: {x: 0.08199369, y: 0.000000003196623, z: -2.6298846e-10, w: 0.9966329}
+  m_LocalPosition: {x: -0.000000063285924, y: 3.2343524, z: -9.8655405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1099,69 +1119,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &867036150
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 339566573}
-    m_Modifications:
-    - target: {fileID: 1514878613845966, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
-      propertyPath: m_Name
-      value: Sword(3)_DH
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.000000003725288
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.000000014901152
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.000000006053593
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 1.271
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 27.139
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -16.606
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
---- !u!4 &867036151 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90,
-    type: 3}
-  m_PrefabInstance: {fileID: 867036150}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &924426368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1307,7 +1264,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935043977}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23877859, y: 0.000000018680861, z: -0.00000000459346, w: 0.97107404}
+  m_LocalRotation: {x: 0.23877859, y: -0.000000018680861, z: 0.00000000459346, w: 0.97107404}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1465,6 +1422,97 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1211672551
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 339566573}
+    m_Modifications:
+    - target: {fileID: 2204249638584032862, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
+      propertyPath: m_Name
+      value: Basic Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7734705165626333653, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
+      propertyPath: _socket
+      value: 
+      objectReference: {fileID: 339566573}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3cdb8df3fced63844b1653fd9086c2e9, type: 3}
+--- !u!4 &1211672552 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1211672551}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1211672553 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7734705165626333653, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1211672551}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88c4733213db3a40ad457488be91650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1302918321
 GameObject:
   m_ObjectHideFlags: 3
@@ -2087,6 +2135,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1276430064690000759}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4620179301663401 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1843106409629240393, guid: ad87e75ec845f6e4fb1e6c89e2c1a6fc,
+    type: 3}
+  m_PrefabInstance: {fileID: 5213220455573576242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4935364254243980
 Transform:
   m_ObjectHideFlags: 0
@@ -2730,7 +2784,7 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  _characterAttack: {fileID: 0}
+  _weaponEquipmentManager: {fileID: 0}
   _onCharacterRoll:
     m_PersistentCalls:
       m_Calls:
@@ -3890,8 +3944,8 @@ GameObject:
   - component: {fileID: 5457798679946945936}
   - component: {fileID: 5939338231251299811}
   - component: {fileID: 101737877}
-  - component: {fileID: 5939338231251299813}
   - component: {fileID: 5939338231251299814}
+  - component: {fileID: 5939338231251299815}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -6218,6 +6272,96 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5032056992934907743}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5213220455573576242
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 267664625}
+    m_Modifications:
+    - target: {fileID: 1843106409629240393, guid: ad87e75ec845f6e4fb1e6c89e2c1a6fc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843106409629240393, guid: ad87e75ec845f6e4fb1e6c89e2c1a6fc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843106409629240393, guid: ad87e75ec845f6e4fb1e6c89e2c1a6fc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843106409629240393, guid: ad87e75ec845f6e4fb1e6c89e2c1a6fc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843106409629240393, guid: ad87e75ec845f6e4fb1e6c89e2c1a6fc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843106409629240393, guid: ad87e75ec845f6e4fb1e6c89e2c1a6fc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843106409629240393, guid: ad87e75ec845f6e4fb1e6c89e2c1a6fc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843106409629240393, guid: ad87e75ec845f6e4fb1e6c89e2c1a6fc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843106409629240393, guid: ad87e75ec845f6e4fb1e6c89e2c1a6fc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843106409629240393, guid: ad87e75ec845f6e4fb1e6c89e2c1a6fc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7258779803792381215, guid: ad87e75ec845f6e4fb1e6c89e2c1a6fc,
+        type: 3}
+      propertyPath: _socket
+      value: 
+      objectReference: {fileID: 267664625}
+    - target: {fileID: 7258779803792381215, guid: ad87e75ec845f6e4fb1e6c89e2c1a6fc,
+        type: 3}
+      propertyPath: _distance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956607862578014920, guid: ad87e75ec845f6e4fb1e6c89e2c1a6fc,
+        type: 3}
+      propertyPath: m_Name
+      value: Wooden Bow
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ad87e75ec845f6e4fb1e6c89e2c1a6fc, type: 3}
+--- !u!114 &5213220455573576243 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7258779803792381215, guid: ad87e75ec845f6e4fb1e6c89e2c1a6fc,
+    type: 3}
+  m_PrefabInstance: {fileID: 5213220455573576242}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd7a66d2ccb1894c88b4fdc57fd3ab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5217358467582741874
 Transform:
   m_ObjectHideFlags: 0
@@ -6824,81 +6968,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5939338231251299813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2232568680205372728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b65b20a055a4ab40ae27951e1035e31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hitPoint: 30
-  _maxCombo: 4
-  _comboDuration: 5
-  _swordSocket: {fileID: 339566573}
-  _hitboxSize: {x: 0.1, y: 0.1, z: 1.15}
-  _hitboxOffset: {x: 0, y: 0, z: 0.71}
-  _hitableLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  OnAttack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5939338231251299811}
-        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterMovement, Assembly-CSharp
-        m_MethodName: set_IsAbleToMove
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 101737877}
-        m_TargetAssemblyTypeName: Fadhli.Game.Module.PlayerAnimation, Assembly-CSharp
-        m_MethodName: OnCharacterBeginAttack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnHeavyAttack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5939338231251299811}
-        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterMovement, Assembly-CSharp
-        m_MethodName: set_IsAbleToMove
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 101737877}
-        m_TargetAssemblyTypeName: Fadhli.Game.Module.PlayerAnimation, Assembly-CSharp
-        m_MethodName: OnCharacterBeginHeavyAttack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &5939338231251299814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6971,6 +7040,78 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &5939338231251299815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2232568680205372728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51b8f477f1eca574ba52b2f1a4400a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerAnimation: {fileID: 0}
+  _playerWeapons:
+  - {fileID: 1211672553}
+  - {fileID: 5213220455573576243}
+  _swordSocket: {fileID: 339566573}
+  _bowSocket: {fileID: 267664625}
+  OnAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5939338231251299811}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterMovement, Assembly-CSharp
+        m_MethodName: set_IsAbleToMove
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 101737877}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.PlayerAnimation, Assembly-CSharp
+        m_MethodName: OnCharacterBeginAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHeavyAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5939338231251299811}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterMovement, Assembly-CSharp
+        m_MethodName: set_IsAbleToMove
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 101737877}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.PlayerAnimation, Assembly-CSharp
+        m_MethodName: OnCharacterBeginHeavyAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &5949200829077046991
 GameObject:
@@ -7662,6 +7803,7 @@ Transform:
   - {fileID: 2690975186872858534}
   - {fileID: 2785577868868662901}
   - {fileID: 339566573}
+  - {fileID: 267664625}
   m_Father: {fileID: 6061983876594842074}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6895754035273801607

@@ -14,6 +14,7 @@ namespace Fadhli.Game
         public Action OnLightAttackInput;
         public Action OnHeavyAttackInput;
         public Action OnLockTargetInput;
+        public Action OnSwitchWeaponInput;
 
         private IA_Default _inputAction;
         public InputManager()
@@ -83,6 +84,14 @@ namespace Fadhli.Game
             if (context.performed)
             {
                 OnHeavyAttackInput?.Invoke();
+            }
+        }
+
+        public void OnSwitchWeapon(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnSwitchWeaponInput?.Invoke();
             }
         }
     }

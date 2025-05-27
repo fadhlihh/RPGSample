@@ -124,7 +124,7 @@ namespace Fadhli.Game.Module
                     // transform.LookAt(Target.transform.position);
                     Vector3 toTarget = Target.transform.position - transform.position;
                     toTarget.y = 0;
-                    if (toTarget.sqrMagnitude > 0.01f)
+                    if (toTarget.sqrMagnitude > 0.001f)
                     {
                         Quaternion lookRotation = Quaternion.LookRotation(toTarget);
                         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, _rotationSpeed * Time.deltaTime);

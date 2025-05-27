@@ -80,6 +80,15 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Switch Weapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""2822b601-735f-40d6-9235-57d71cdc47ce"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -247,6 +256,17 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
                     ""action"": ""HeavyAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5d95f10a-32e1-4362-b0c0-f29fa26b0eff"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch Weapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -289,6 +309,7 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         m_General_LightAttack = m_General.FindAction("LightAttack", throwIfNotFound: true);
         m_General_HeavyAttack = m_General.FindAction("HeavyAttack", throwIfNotFound: true);
         m_General_LockTarget = m_General.FindAction("LockTarget", throwIfNotFound: true);
+        m_General_SwitchWeapon = m_General.FindAction("Switch Weapon", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -356,6 +377,7 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
     private readonly InputAction m_General_LightAttack;
     private readonly InputAction m_General_HeavyAttack;
     private readonly InputAction m_General_LockTarget;
+    private readonly InputAction m_General_SwitchWeapon;
     public struct GeneralActions
     {
         private @IA_Default m_Wrapper;
@@ -366,6 +388,7 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         public InputAction @LightAttack => m_Wrapper.m_General_LightAttack;
         public InputAction @HeavyAttack => m_Wrapper.m_General_HeavyAttack;
         public InputAction @LockTarget => m_Wrapper.m_General_LockTarget;
+        public InputAction @SwitchWeapon => m_Wrapper.m_General_SwitchWeapon;
         public InputActionMap Get() { return m_Wrapper.m_General; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -393,6 +416,9 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
             @LockTarget.started += instance.OnLockTarget;
             @LockTarget.performed += instance.OnLockTarget;
             @LockTarget.canceled += instance.OnLockTarget;
+            @SwitchWeapon.started += instance.OnSwitchWeapon;
+            @SwitchWeapon.performed += instance.OnSwitchWeapon;
+            @SwitchWeapon.canceled += instance.OnSwitchWeapon;
         }
 
         private void UnregisterCallbacks(IGeneralActions instance)
@@ -415,6 +441,9 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
             @LockTarget.started -= instance.OnLockTarget;
             @LockTarget.performed -= instance.OnLockTarget;
             @LockTarget.canceled -= instance.OnLockTarget;
+            @SwitchWeapon.started -= instance.OnSwitchWeapon;
+            @SwitchWeapon.performed -= instance.OnSwitchWeapon;
+            @SwitchWeapon.canceled -= instance.OnSwitchWeapon;
         }
 
         public void RemoveCallbacks(IGeneralActions instance)
@@ -458,5 +487,6 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         void OnLightAttack(InputAction.CallbackContext context);
         void OnHeavyAttack(InputAction.CallbackContext context);
         void OnLockTarget(InputAction.CallbackContext context);
+        void OnSwitchWeapon(InputAction.CallbackContext context);
     }
 }

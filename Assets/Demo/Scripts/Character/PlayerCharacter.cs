@@ -9,16 +9,16 @@ namespace Fadhli.Game.Module
     public class PlayerCharacter : Character, IRolling
     {
         [SerializeField]
-        private CharacterAttack _characterAttack;
+        private PlayerWeaponEquipmentManager _weaponEquipmentManager;
         [SerializeField]
         private UnityEvent _onCharacterRoll;
 
+        public PlayerWeaponEquipmentManager WeaponEquipmentManager { get { return _weaponEquipmentManager; } }
         private bool _isFirstPerson;
 
         public bool IsFirstPerson { get { return _isFirstPerson; } set { _isFirstPerson = value; } }
         public DirectionalCharacterMovement DirectionalCharacterMovement { get; private set; }
 
-        public CharacterAttack CharacterAttack { get { return _characterAttack; } }
 
         public UnityEvent OnCharacterRoll => _onCharacterRoll;
 
@@ -28,9 +28,9 @@ namespace Fadhli.Game.Module
         {
             base.Awake();
             DirectionalCharacterMovement = CharacterMovement as DirectionalCharacterMovement;
-            if (!_characterAttack)
+            if (!_weaponEquipmentManager)
             {
-                _characterAttack = GetComponent<CharacterAttack>();
+                _weaponEquipmentManager = GetComponent<PlayerWeaponEquipmentManager>();
             }
         }
 
@@ -40,8 +40,9 @@ namespace Fadhli.Game.Module
             InputManager.Instance.OnMoveInput += DirectionalCharacterMovement.AddMovementInput;
             InputManager.Instance.OnSprintInput += DirectionalCharacterMovement.Sprint;
             InputManager.Instance.OnRollInput += Roll;
-            InputManager.Instance.OnLightAttackInput += CharacterAttack.Attack;
-            InputManager.Instance.OnHeavyAttackInput += CharacterAttack.HeavyAttack;
+            InputManager.Instance.OnLightAttackInput += WeaponEquipmentManager.LightAttack;
+            InputManager.Instance.OnHeavyAttackInput += WeaponEquipmentManager.HeavyAttack;
+            InputManager.Instance.OnSwitchWeaponInput += WeaponEquipmentManager.NextWeapon;
         }
 
         private void OnDisable()
@@ -50,14 +51,14 @@ namespace Fadhli.Game.Module
             InputManager.Instance.OnMoveInput -= DirectionalCharacterMovement.AddMovementInput;
             InputManager.Instance.OnSprintInput -= DirectionalCharacterMovement.Sprint;
             InputManager.Instance.OnRollInput -= Roll;
-            InputManager.Instance.OnLightAttackInput -= CharacterAttack.Attack;
-            InputManager.Instance.OnHeavyAttackInput -= CharacterAttack.HeavyAttack;
+            InputManager.Instance.OnLightAttackInput -= WeaponEquipmentManager.LightAttack;
+            InputManager.Instance.OnHeavyAttackInput -= WeaponEquipmentManager.HeavyAttack;
+            InputManager.Instance.OnSwitchWeaponInput -= WeaponEquipmentManager.NextWeapon;
         }
 
         public void Roll()
         {
-            bool isAttacking = GetComponent<CharacterAttack>() != null ? GetComponent<CharacterAttack>().IsAttacking : false;
-            if (DirectionalCharacterMovement.MoveDirection.magnitude > 0.01f && !isAttacking)
+            if (DirectionalCharacterMovement.MoveDirection.magnitude > 0.01f && !WeaponEquipmentManager.IsAttacking)
             {
                 DirectionalCharacterMovement.IsAbleToMove = false;
                 IsRolling = true;
