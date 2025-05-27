@@ -371,6 +371,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  OnBeginBlockAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndBlockAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBeginParryAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndParryAnimation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5939338231251299816}
+        m_TargetAssemblyTypeName: CharacterDefense, Assembly-CSharp
+        m_MethodName: StopParry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5939338231251299811}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterMovement, Assembly-CSharp
+        m_MethodName: set_IsAbleToMove
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &151050108
 GameObject:
   m_ObjectHideFlags: 3
@@ -2866,6 +2902,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _weaponEquipmentManager: {fileID: 0}
+  _characterDefense: {fileID: 0}
   _onCharacterRoll:
     m_PersistentCalls:
       m_Calls:
@@ -4028,6 +4065,7 @@ GameObject:
   - component: {fileID: 101737877}
   - component: {fileID: 5939338231251299814}
   - component: {fileID: 5939338231251299815}
+  - component: {fileID: 5939338231251299816}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -7184,6 +7222,75 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Fadhli.Game.Module.PlayerAnimation, Assembly-CSharp
         m_MethodName: OnCharacterBeginHeavyAttack
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5939338231251299816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2232568680205372728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24905c0388260574caefdeada412ef67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStartBlock:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 101737877}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.PlayerAnimation, Assembly-CSharp
+        m_MethodName: OnCharacterBeginBlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnStopBlock:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 101737877}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.PlayerAnimation, Assembly-CSharp
+        m_MethodName: OnCharacterStopBlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnParry:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 101737877}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.PlayerAnimation, Assembly-CSharp
+        m_MethodName: OnCharacterParry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5939338231251299811}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterMovement, Assembly-CSharp
+        m_MethodName: set_IsAbleToMove
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

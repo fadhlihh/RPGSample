@@ -15,6 +15,9 @@ namespace Fadhli.Game
         public Action OnHeavyAttackInput;
         public Action OnLockTargetInput;
         public Action OnSwitchWeaponInput;
+        public Action OnStartBlockInput;
+        public Action OnStopBlockInput;
+        public Action OnParryInput;
 
         private IA_Default _inputAction;
         public InputManager()
@@ -92,6 +95,26 @@ namespace Fadhli.Game
             if (context.performed)
             {
                 OnSwitchWeaponInput?.Invoke();
+            }
+        }
+
+        public void OnBlock(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnStartBlockInput?.Invoke();
+            }
+            if (context.canceled)
+            {
+                OnStopBlockInput?.Invoke();
+            }
+        }
+
+        public void OnParry(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnParryInput?.Invoke();
             }
         }
     }

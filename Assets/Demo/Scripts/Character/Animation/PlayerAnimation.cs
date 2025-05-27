@@ -15,6 +15,10 @@ namespace Fadhli.Game.Module
         public UnityEvent OnEndTraceHitAnimation;
         public UnityEvent OnBeginHeavyAttackingAnimation;
         public UnityEvent OnEndHeavyAttackingAnimation;
+        public UnityEvent OnBeginBlockAnimation;
+        public UnityEvent OnEndBlockAnimation;
+        public UnityEvent OnBeginParryAnimation;
+        public UnityEvent OnEndParryAnimation;
 
         public void OnCharacterBeginRoll()
         {
@@ -83,6 +87,29 @@ namespace Fadhli.Game.Module
         public void OnEndLockTarget()
         {
             _animator.SetBool("IsLockTarget", false);
+        }
+
+        public void OnCharacterBeginBlock()
+        {
+            _animator.SetLayerWeight(1, 1);
+            OnBeginBlockAnimation?.Invoke();
+        }
+
+        public void OnCharacterStopBlock()
+        {
+            _animator.SetLayerWeight(1, 0);
+            OnEndBlockAnimation?.Invoke();
+        }
+
+        public void OnCharacterParry()
+        {
+            _animator.Play("Parry");
+            OnBeginParryAnimation?.Invoke();
+        }
+
+        public void OnCharacterEndParry()
+        {
+            OnEndParryAnimation?.Invoke();
         }
 
         protected void Update()

@@ -89,6 +89,24 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Block"",
+                    ""type"": ""Button"",
+                    ""id"": ""351e6fdd-f142-4d0b-983a-b1b526d172aa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Parry"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b1adcda-a449-4dbe-8377-8b5c6db4af57"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -216,7 +234,7 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""9741eef5-1895-432b-8e63-71b79c8436e2"",
-                    ""path"": ""<Keyboard>/leftShift"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & Mouse"",
@@ -267,6 +285,28 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
                     ""action"": ""Switch Weapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5920d122-ffb2-4f25-bca6-3ddfe6d791e4"",
+                    ""path"": ""<Keyboard>/alt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""172248d0-504b-4b1d-9c05-a67bbb6d804a"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Parry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -310,6 +350,8 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         m_General_HeavyAttack = m_General.FindAction("HeavyAttack", throwIfNotFound: true);
         m_General_LockTarget = m_General.FindAction("LockTarget", throwIfNotFound: true);
         m_General_SwitchWeapon = m_General.FindAction("Switch Weapon", throwIfNotFound: true);
+        m_General_Block = m_General.FindAction("Block", throwIfNotFound: true);
+        m_General_Parry = m_General.FindAction("Parry", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -378,6 +420,8 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
     private readonly InputAction m_General_HeavyAttack;
     private readonly InputAction m_General_LockTarget;
     private readonly InputAction m_General_SwitchWeapon;
+    private readonly InputAction m_General_Block;
+    private readonly InputAction m_General_Parry;
     public struct GeneralActions
     {
         private @IA_Default m_Wrapper;
@@ -389,6 +433,8 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         public InputAction @HeavyAttack => m_Wrapper.m_General_HeavyAttack;
         public InputAction @LockTarget => m_Wrapper.m_General_LockTarget;
         public InputAction @SwitchWeapon => m_Wrapper.m_General_SwitchWeapon;
+        public InputAction @Block => m_Wrapper.m_General_Block;
+        public InputAction @Parry => m_Wrapper.m_General_Parry;
         public InputActionMap Get() { return m_Wrapper.m_General; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -419,6 +465,12 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
             @SwitchWeapon.started += instance.OnSwitchWeapon;
             @SwitchWeapon.performed += instance.OnSwitchWeapon;
             @SwitchWeapon.canceled += instance.OnSwitchWeapon;
+            @Block.started += instance.OnBlock;
+            @Block.performed += instance.OnBlock;
+            @Block.canceled += instance.OnBlock;
+            @Parry.started += instance.OnParry;
+            @Parry.performed += instance.OnParry;
+            @Parry.canceled += instance.OnParry;
         }
 
         private void UnregisterCallbacks(IGeneralActions instance)
@@ -444,6 +496,12 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
             @SwitchWeapon.started -= instance.OnSwitchWeapon;
             @SwitchWeapon.performed -= instance.OnSwitchWeapon;
             @SwitchWeapon.canceled -= instance.OnSwitchWeapon;
+            @Block.started -= instance.OnBlock;
+            @Block.performed -= instance.OnBlock;
+            @Block.canceled -= instance.OnBlock;
+            @Parry.started -= instance.OnParry;
+            @Parry.performed -= instance.OnParry;
+            @Parry.canceled -= instance.OnParry;
         }
 
         public void RemoveCallbacks(IGeneralActions instance)
@@ -488,5 +546,7 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         void OnHeavyAttack(InputAction.CallbackContext context);
         void OnLockTarget(InputAction.CallbackContext context);
         void OnSwitchWeapon(InputAction.CallbackContext context);
+        void OnBlock(InputAction.CallbackContext context);
+        void OnParry(InputAction.CallbackContext context);
     }
 }

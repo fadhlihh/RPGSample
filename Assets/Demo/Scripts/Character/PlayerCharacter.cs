@@ -11,6 +11,8 @@ namespace Fadhli.Game.Module
         [SerializeField]
         private PlayerWeaponEquipmentManager _weaponEquipmentManager;
         [SerializeField]
+        private CharacterDefense _characterDefense;
+        [SerializeField]
         private UnityEvent _onCharacterRoll;
 
         public PlayerWeaponEquipmentManager WeaponEquipmentManager { get { return _weaponEquipmentManager; } }
@@ -18,6 +20,7 @@ namespace Fadhli.Game.Module
 
         public bool IsFirstPerson { get { return _isFirstPerson; } set { _isFirstPerson = value; } }
         public DirectionalCharacterMovement DirectionalCharacterMovement { get; private set; }
+        public CharacterDefense CharacterDefense { get => _characterDefense; }
 
 
         public UnityEvent OnCharacterRoll => _onCharacterRoll;
@@ -32,6 +35,11 @@ namespace Fadhli.Game.Module
             {
                 _weaponEquipmentManager = GetComponent<PlayerWeaponEquipmentManager>();
             }
+
+            if (!_characterDefense)
+            {
+                _characterDefense = GetComponent<CharacterDefense>();
+            }
         }
 
         private void OnEnable()
@@ -43,6 +51,9 @@ namespace Fadhli.Game.Module
             InputManager.Instance.OnLightAttackInput += WeaponEquipmentManager.LightAttack;
             InputManager.Instance.OnHeavyAttackInput += WeaponEquipmentManager.HeavyAttack;
             InputManager.Instance.OnSwitchWeaponInput += WeaponEquipmentManager.NextWeapon;
+            InputManager.Instance.OnStartBlockInput += CharacterDefense.StartBlock;
+            InputManager.Instance.OnStopBlockInput += CharacterDefense.StopBlock;
+            InputManager.Instance.OnParryInput += CharacterDefense.Parry;
         }
 
         private void OnDisable()
@@ -54,6 +65,9 @@ namespace Fadhli.Game.Module
             InputManager.Instance.OnLightAttackInput -= WeaponEquipmentManager.LightAttack;
             InputManager.Instance.OnHeavyAttackInput -= WeaponEquipmentManager.HeavyAttack;
             InputManager.Instance.OnSwitchWeaponInput -= WeaponEquipmentManager.NextWeapon;
+            InputManager.Instance.OnStartBlockInput -= CharacterDefense.StartBlock;
+            InputManager.Instance.OnStopBlockInput -= CharacterDefense.StopBlock;
+            InputManager.Instance.OnParryInput -= CharacterDefense.Parry;
         }
 
         public void Roll()
