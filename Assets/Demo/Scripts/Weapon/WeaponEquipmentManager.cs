@@ -15,6 +15,8 @@ public class PlayerWeaponEquipmentManager : MonoBehaviour
     private Transform _swordSocket;
     [SerializeField]
     private Transform _bowSocket;
+    [SerializeField]
+    private Transform _spellSocket;
 
     private Dictionary<EWeaponType, Transform> _weaponSockets = new Dictionary<EWeaponType, Transform>();
     private int _currentWeaponIndex = 0;
@@ -37,6 +39,11 @@ public class PlayerWeaponEquipmentManager : MonoBehaviour
         if (_bowSocket != null)
         {
             _weaponSockets.Add(EWeaponType.Range, _bowSocket);
+        }
+
+        if (_spellSocket != null)
+        {
+            _weaponSockets.Add(EWeaponType.Spell, _spellSocket);
         }
     }
 

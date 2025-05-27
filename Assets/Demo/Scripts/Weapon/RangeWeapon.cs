@@ -14,6 +14,7 @@ public class RangeWeapon : Weapon
     private Transform _arrowProjectileSpawner;
 
     public float Distance { get => _distance; }
+    public override EWeaponType Type => EWeaponType.Range;
 
     private void Start()
     {

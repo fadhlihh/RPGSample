@@ -96,10 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88c4733213db3a40ad457488be91650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
   _name: Basic Sword
   _damage: 20
-  _maxCombo: 1
+  _maxCombo: 4
   _comboDuration: 3
   _socket: {fileID: 0}
   _hitboxSize: {x: 1, y: 1, z: 1}

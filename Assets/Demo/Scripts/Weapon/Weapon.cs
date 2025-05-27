@@ -6,8 +6,6 @@ using UnityEngine;
 public abstract class Weapon : MonoBehaviour
 {
     [SerializeField]
-    protected EWeaponType _type;
-    [SerializeField]
     protected string _name;
     [SerializeField]
     protected int _damage;
@@ -23,12 +21,11 @@ public abstract class Weapon : MonoBehaviour
     private Vector3 _hitboxOffset = new Vector3(0, 0, 0);
     [SerializeField]
     private LayerMask _hitableLayer;
-
     private Coroutine _resetComboTimerCoroutine;
     private HashSet<Collider> _alreadyHit = new HashSet<Collider>();
     protected int _damageModifier;
 
-    public EWeaponType Type { get => _type; }
+    public virtual EWeaponType Type { get; }
     public string Name { get => _name; }
     public int Damage { get => _damage; }
     public int Combo { get; private set; } = 1;
@@ -79,7 +76,7 @@ public abstract class Weapon : MonoBehaviour
                 if (!_alreadyHit.Contains(hit))
                 {
                     _alreadyHit.Add(hit);
-                    hit.GetComponent<IDamagable>().Damage(_damage + _damageModifier);
+                    hit.GetComponent<IDamagable>().Damage(_damage + _damageModifier, hit.ClosestPoint(center));
                 }
             }
         }

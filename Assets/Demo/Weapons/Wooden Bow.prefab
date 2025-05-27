@@ -1100,10 +1100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd7a66d2ccb1894c88b4fdc57fd3ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 1
   _name: Wooden Bow
-  _damage: 30
-  _maxCombo: 1
+  _damage: 20
+  _maxCombo: 4
   _comboDuration: 3
   _socket: {fileID: 0}
   _hitboxSize: {x: 1, y: 1, z: 1}
@@ -1111,7 +1110,7 @@ MonoBehaviour:
   _hitableLayer:
     serializedVersion: 2
     m_Bits: 64
-  _distance: 5
+  _distance: 1000
   _animator: {fileID: 0}
   _arrowProjectilePrefabs: {fileID: 1959729250425484, guid: 5187dfa4d8f19524e8bbf7c6894b7de7,
     type: 3}
