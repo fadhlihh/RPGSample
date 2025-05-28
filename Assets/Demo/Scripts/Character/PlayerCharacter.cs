@@ -29,11 +29,11 @@ namespace Fadhli.Game.Module
 
         public bool IsRolling { get; private set; }
 
-        public int HealthPoint { get; private set; }
+        public int HealthPoint { get; private set; } = 100;
 
         public bool IsDead { get; private set; }
 
-        private void Awake()
+        protected override void Awake()
         {
             base.Awake();
             DirectionalCharacterMovement = CharacterMovement as DirectionalCharacterMovement;
@@ -97,16 +97,17 @@ namespace Fadhli.Game.Module
 
         public void Damage(int hitPoint, Vector3 hitImpact)
         {
-            if (!CharacterDefense.IsBlocking)
+            if (!IsDead)
             {
-                if (!IsDead)
+                HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0));
+                HUDManager.Instance.CharacterUI.SetHealthBarValue(HealthPoint);
+                if (!CharacterDefense.IsBlocking)
                 {
-                    HealthPoint -= hitPoint;
                     OnDamage?.Invoke();
-                    if (HealthPoint <= 0)
-                    {
-                        Death();
-                    }
+                }
+                if (HealthPoint <= 0)
+                {
+                    Death();
                 }
             }
             Instantiate(_impactPrefab, transform.position, Quaternion.identity);
@@ -115,16 +116,17 @@ namespace Fadhli.Game.Module
         public void Damage(int hitPoint)
         {
             Instantiate(_impactPrefab, transform.position, Quaternion.identity);
-            if (!CharacterDefense.IsBlocking)
+            if (!IsDead)
             {
-                if (!IsDead)
+                HealthPoint -= HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0)); ;
+                HUDManager.Instance.CharacterUI.SetHealthBarValue(HealthPoint);
+                if (!CharacterDefense.IsBlocking)
                 {
-                    HealthPoint -= hitPoint;
                     OnDamage?.Invoke();
-                    if (HealthPoint <= 0)
-                    {
-                        Death();
-                    }
+                }
+                if (HealthPoint <= 0)
+                {
+                    Death();
                 }
             }
         }

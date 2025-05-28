@@ -49,6 +49,7 @@ public class PlayerWeaponEquipmentManager : WeaponEquipmentManager
             }
             _animation.OnBeginTraceHitAnimation.AddListener(_playerWeapons[_currentWeaponIndex].StartTraceHit);
             _animation.OnEndTraceHitAnimation.AddListener(_playerWeapons[_currentWeaponIndex].StopTraceHit);
+            HUDManager.Instance.WeaponSlotUI.SetIcon(_playerWeapons[_currentWeaponIndex].Icon);
             _weaponSockets[_playerWeapons[_currentWeaponIndex].Type].gameObject.SetActive(true);
         }
     }

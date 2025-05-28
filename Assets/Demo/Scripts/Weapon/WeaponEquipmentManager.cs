@@ -29,7 +29,7 @@ public abstract class WeaponEquipmentManager : MonoBehaviour
         _character = GetComponent<Character>();
         if (!_animation)
         {
-            _animation = GetComponent<PlayerAnimation>();
+            _animation = GetComponent<CombatAnimation>();
         }
         _animation.OnBeginTraceHitAnimation.AddListener(_playerWeapons[_currentWeaponIndex].StartTraceHit);
         _animation.OnEndTraceHitAnimation.AddListener(_playerWeapons[_currentWeaponIndex].StopTraceHit);
@@ -39,7 +39,8 @@ public abstract class WeaponEquipmentManager : MonoBehaviour
     public void LightAttack()
     {
         bool isRolling = GetComponent<IRolling>() != null ? GetComponent<IRolling>().IsRolling : false;
-        if (!IsAttacking && _character.CharacterMovement.IsGrounded && !isRolling)
+        bool isGrounded = GetComponent<CharacterMovement>() != null ? GetComponent<CharacterMovement>().IsGrounded : true;
+        if (!IsAttacking && isGrounded && !isRolling)
         {
             IsAttacking = true;
             _playerWeapons[_currentWeaponIndex].LightAttack();
@@ -50,7 +51,8 @@ public abstract class WeaponEquipmentManager : MonoBehaviour
     public void HeavyAttack()
     {
         bool isRolling = GetComponent<IRolling>() != null ? GetComponent<IRolling>().IsRolling : false;
-        if (!IsAttacking && _character.CharacterMovement.IsGrounded && !isRolling)
+        bool isGrounded = GetComponent<CharacterMovement>() != null ? GetComponent<CharacterMovement>().IsGrounded : true;
+        if (!IsAttacking && isGrounded && !isRolling)
         {
             IsAttacking = true;
             IsHeavyAttack = true;

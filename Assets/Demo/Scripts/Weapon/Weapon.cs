@@ -8,6 +8,8 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField]
     protected string _name;
     [SerializeField]
+    protected Sprite _icon;
+    [SerializeField]
     protected int _damage;
     [SerializeField]
     private int _maxCombo = 1;
@@ -27,6 +29,7 @@ public abstract class Weapon : MonoBehaviour
 
     public virtual EWeaponType Type { get; }
     public string Name { get => _name; }
+    public Sprite Icon { get => _icon; }
     public int Damage { get => _damage; }
     public int Combo { get; private set; } = 1;
     public bool IsTracingHit { get; private set; }

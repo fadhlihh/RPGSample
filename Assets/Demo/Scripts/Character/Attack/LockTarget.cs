@@ -54,6 +54,10 @@ namespace Fadhli.Game.Module
         {
             IsLockTarget = true;
             Target = enemy;
+            if (Target)
+            {
+                Target.EnemyUI.ShowTarget();
+            }
             _lockCamera.Priority.Value = 2;
             enemy.OnDeath.AddListener(StopLockTarget);
             OnStartLockTarget?.Invoke();
@@ -63,6 +67,10 @@ namespace Fadhli.Game.Module
         {
             IsLockTarget = false;
             OnStopLockTarget?.Invoke();
+            if (Target)
+            {
+                Target.EnemyUI.HideTarget();
+            }
             Target = null;
             _thirdPersonCamera.HorizontalAxis.Value = transform.eulerAngles.y;
             _lockCamera.Priority.Value = 0;

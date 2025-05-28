@@ -5,12 +5,16 @@ using UnityEngine.Events;
 
 public class CharacterDefense : MonoBehaviour
 {
+    [SerializeField]
+    private int _damageModifier;
+
     public UnityEvent OnStartBlock;
     public UnityEvent OnStopBlock;
     public UnityEvent OnParry;
 
     public bool IsBlocking { get; private set; }
     public bool IsParrying { get; set; }
+    public int DamageModifier { get => _damageModifier; }
 
     public void StartBlock()
     {

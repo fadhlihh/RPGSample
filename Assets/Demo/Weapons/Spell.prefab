@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Fire Spell
+  _icon: {fileID: 21300000, guid: 1714b9fbca19b3345b2f76541786c932, type: 3}
   _damage: 20
   _maxCombo: 4
   _comboDuration: 3

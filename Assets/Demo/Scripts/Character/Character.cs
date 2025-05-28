@@ -20,7 +20,7 @@ namespace Fadhli.Game.Module
         public CharacterAnimation CharacterAnimation { get { return _characterAnimation; } }
         public Transform LookPivot { get; }
 
-        protected void Awake()
+        protected virtual void Awake()
         {
             if (!_characterMovement)
             {
