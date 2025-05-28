@@ -1,83 +1,39 @@
-using System.Collections;
 using System.Collections.Generic;
 using Fadhli.Game.Module;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Character), typeof(CharacterAnimation))]
-public class PlayerWeaponEquipmentManager : MonoBehaviour
+public abstract class WeaponEquipmentManager : MonoBehaviour
 {
     [SerializeField]
-    private PlayerAnimation _playerAnimation;
+    protected List<Weapon> _playerWeapons = new List<Weapon>();
     [SerializeField]
-    private List<Weapon> _playerWeapons = new List<Weapon>();
-    [SerializeField]
-    private Transform _swordSocket;
-    [SerializeField]
-    private Transform _bowSocket;
-    [SerializeField]
-    private Transform _spellSocket;
+    protected CombatAnimation _animation;
 
-    private Dictionary<EWeaponType, Transform> _weaponSockets = new Dictionary<EWeaponType, Transform>();
-    private int _currentWeaponIndex = 0;
-    private Character _character;
-
-    public UnityEvent<int> OnAttack;
-    public UnityEvent<EWeaponType> OnHeavyAttack;
+    protected Dictionary<EWeaponType, Transform> _weaponSockets = new Dictionary<EWeaponType, Transform>();
+    protected int _currentWeaponIndex = 0;
+    protected Character _character;
 
     public List<Weapon> PlayerWeapons { get => _playerWeapons; }
     public bool IsAttacking { get; set; }
     public bool IsHeavyAttack { get; set; }
 
-    public void InitSocket()
-    {
-        if (_swordSocket != null)
-        {
-            _weaponSockets.Add(EWeaponType.Melee, _swordSocket);
-        }
+    public UnityEvent<int> OnAttack;
+    public UnityEvent<EWeaponType> OnHeavyAttack;
 
-        if (_bowSocket != null)
-        {
-            _weaponSockets.Add(EWeaponType.Range, _bowSocket);
-        }
+    protected abstract void InitSocket();
 
-        if (_spellSocket != null)
-        {
-            _weaponSockets.Add(EWeaponType.Spell, _spellSocket);
-        }
-    }
-
-    private void Start()
+    protected virtual void Start()
     {
         _character = GetComponent<Character>();
-        if (!_playerAnimation)
+        if (!_animation)
         {
-            _playerAnimation = GetComponent<PlayerAnimation>();
+            _animation = GetComponent<PlayerAnimation>();
         }
+        _animation.OnBeginTraceHitAnimation.AddListener(_playerWeapons[_currentWeaponIndex].StartTraceHit);
+        _animation.OnEndTraceHitAnimation.AddListener(_playerWeapons[_currentWeaponIndex].StopTraceHit);
         InitSocket();
-        _playerAnimation.OnBeginTraceHitAnimation.AddListener(_playerWeapons[_currentWeaponIndex].StartTraceHit);
-        _playerAnimation.OnEndTraceHitAnimation.AddListener(_playerWeapons[_currentWeaponIndex].StopTraceHit);
-    }
-
-    public void NextWeapon()
-    {
-        if (!IsAttacking && !IsHeavyAttack)
-        {
-            _weaponSockets[_playerWeapons[_currentWeaponIndex].Type].gameObject.SetActive(false);
-            _playerAnimation.OnBeginTraceHitAnimation.RemoveListener(_playerWeapons[_currentWeaponIndex].StartTraceHit);
-            _playerAnimation.OnEndTraceHitAnimation.RemoveListener(_playerWeapons[_currentWeaponIndex].StopTraceHit);
-            if (_currentWeaponIndex < _playerWeapons.Count - 1)
-            {
-                _currentWeaponIndex += 1;
-            }
-            else
-            {
-                _currentWeaponIndex = 0;
-            }
-            _playerAnimation.OnBeginTraceHitAnimation.AddListener(_playerWeapons[_currentWeaponIndex].StartTraceHit);
-            _playerAnimation.OnEndTraceHitAnimation.AddListener(_playerWeapons[_currentWeaponIndex].StopTraceHit);
-            _weaponSockets[_playerWeapons[_currentWeaponIndex].Type].gameObject.SetActive(true);
-        }
     }
 
     public void LightAttack()

@@ -132,24 +132,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 0}
-  OnBeginRollingAnimation:
-    m_PersistentCalls:
-      m_Calls: []
-  OnEndRollingAnimation:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 599491909593121192}
-        m_TargetAssemblyTypeName: Fadhli.Game.Module.PlayerCharacter, Assembly-CSharp
-        m_MethodName: EndRoll
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   OnBeginAttackingAnimation:
     m_PersistentCalls:
       m_Calls: []
@@ -246,6 +228,24 @@ MonoBehaviour:
   OnEndBlockAnimation:
     m_PersistentCalls:
       m_Calls: []
+  OnBeginRollingAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndRollingAnimation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 599491909593121192}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.PlayerCharacter, Assembly-CSharp
+        m_MethodName: EndRoll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnBeginParryAnimation:
     m_PersistentCalls:
       m_Calls: []
@@ -1207,74 +1207,99 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1321647767}
     m_Modifications:
-    - target: {fileID: 1514878613845966, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
+    - target: {fileID: 2204249638584032862, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
       propertyPath: m_Name
-      value: Sword(3)_DH
+      value: Basic Sword
       objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.000000003725288
       objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
       propertyPath: m_LocalRotation.y
       value: -0.000000014901152
       objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.000000006053593
       objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 1.271
       objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 27.139
       objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -16.606
       objectReference: {fileID: 0}
-    - target: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
+    - target: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7734705165626333653, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
+      propertyPath: _socket
+      value: 
+      objectReference: {fileID: 1321647767}
+    - target: {fileID: 7734705165626333653, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+        type: 3}
+      propertyPath: _hitableLayer.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ffab4f212461ca84f9f43c995ffc7a90, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 3cdb8df3fced63844b1653fd9086c2e9, type: 3}
 --- !u!4 &1506396758 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4595058033197674, guid: ffab4f212461ca84f9f43c995ffc7a90,
+  m_CorrespondingSourceObject: {fileID: 4516829655628676694, guid: 3cdb8df3fced63844b1653fd9086c2e9,
     type: 3}
   m_PrefabInstance: {fileID: 1506396757}
   m_PrefabAsset: {fileID: 0}
@@ -1389,6 +1414,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1276430064690000759}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2043630582 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7734705165626333653, guid: 3cdb8df3fced63844b1653fd9086c2e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1506396757}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88c4733213db3a40ad457488be91650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2141061451
 GameObject:
   m_ObjectHideFlags: 0
@@ -2288,12 +2325,25 @@ MonoBehaviour:
   _lookPivot: {fileID: 0}
   OnDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 101737877}
+        m_TargetAssemblyTypeName: CombatAnimation, Assembly-CSharp
+        m_MethodName: OnCharacterBeginHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
   _weaponEquipmentManager: {fileID: 0}
   _characterDefense: {fileID: 0}
+  _impactPrefab: {fileID: 0}
   _onCharacterRoll:
     m_PersistentCalls:
       m_Calls:
@@ -5249,6 +5299,7 @@ GameObject:
   - component: {fileID: 7389507112053611988}
   - component: {fileID: 7389507112053611989}
   - component: {fileID: 7389507112053611990}
+  - component: {fileID: 7389507112053611991}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -6606,14 +6657,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b8f477f1eca574ba52b2f1a4400a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerAnimation: {fileID: 0}
   _playerWeapons:
   - {fileID: 1211672553}
   - {fileID: 5213220455573576243}
   - {fileID: 1645231987}
-  _swordSocket: {fileID: 339566573}
-  _bowSocket: {fileID: 267664625}
-  _spellSocket: {fileID: 586319788}
+  _animation: {fileID: 0}
   OnAttack:
     m_PersistentCalls:
       m_Calls:
@@ -6668,6 +6716,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _swordSocket: {fileID: 339566573}
+  _bowSocket: {fileID: 267664625}
+  _spellSocket: {fileID: 586319788}
 --- !u!114 &5939338231251299816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7628,6 +7679,124 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 0}
+  OnBeginAttackingAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndAttackingAnimation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7389507112053611991}
+        m_TargetAssemblyTypeName: WeaponEquipmentManager, Assembly-CSharp
+        m_MethodName: set_IsAttacking
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnBeginTraceHitAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndTraceHitAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBeginHeavyAttackingAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndHeavyAttackingAnimation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7389507112053611991}
+        m_TargetAssemblyTypeName: WeaponEquipmentManager, Assembly-CSharp
+        m_MethodName: set_IsAttacking
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7389507112053611991}
+        m_TargetAssemblyTypeName: WeaponEquipmentManager, Assembly-CSharp
+        m_MethodName: set_IsHeavyAttack
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7389507112053611991}
+        m_TargetAssemblyTypeName: WeaponEquipmentManager, Assembly-CSharp
+        m_MethodName: EndHeavyAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnBeginBlockAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndBlockAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7389507112053611991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493914615413981882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408ba7fc9b094e94e920883e452fd8be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerWeapons:
+  - {fileID: 2043630582}
+  _animation: {fileID: 0}
+  OnAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7389507112053611990}
+        m_TargetAssemblyTypeName: CombatAnimation, Assembly-CSharp
+        m_MethodName: OnCharacterBeginAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHeavyAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7389507112053611990}
+        m_TargetAssemblyTypeName: CombatAnimation, Assembly-CSharp
+        m_MethodName: OnCharacterBeginHeavyAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _swordSocket: {fileID: 1321647767}
 --- !u!1 &7404773783638907618
 GameObject:
   m_ObjectHideFlags: 0

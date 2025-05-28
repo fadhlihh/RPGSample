@@ -6,12 +6,14 @@ using UnityEngine.Events;
 
 namespace Fadhli.Game.Module
 {
-    public class PlayerCharacter : Character, IRolling
+    public class PlayerCharacter : Character, IRolling, IDamagable
     {
         [SerializeField]
         private PlayerWeaponEquipmentManager _weaponEquipmentManager;
         [SerializeField]
         private CharacterDefense _characterDefense;
+        [SerializeField]
+        private GameObject _impactPrefab;
         [SerializeField]
         private UnityEvent _onCharacterRoll;
 
@@ -26,6 +28,10 @@ namespace Fadhli.Game.Module
         public UnityEvent OnCharacterRoll => _onCharacterRoll;
 
         public bool IsRolling { get; private set; }
+
+        public int HealthPoint { get; private set; }
+
+        public bool IsDead { get; private set; }
 
         private void Awake()
         {
@@ -87,6 +93,47 @@ namespace Fadhli.Game.Module
         {
             IsRolling = false;
             DirectionalCharacterMovement.IsAbleToMove = true;
+        }
+
+        public void Damage(int hitPoint, Vector3 hitImpact)
+        {
+            if (!CharacterDefense.IsBlocking)
+            {
+                if (!IsDead)
+                {
+                    HealthPoint -= hitPoint;
+                    OnDamage?.Invoke();
+                    if (HealthPoint <= 0)
+                    {
+                        Death();
+                    }
+                }
+            }
+            Instantiate(_impactPrefab, transform.position, Quaternion.identity);
+        }
+
+        public void Damage(int hitPoint)
+        {
+            Instantiate(_impactPrefab, transform.position, Quaternion.identity);
+            if (!CharacterDefense.IsBlocking)
+            {
+                if (!IsDead)
+                {
+                    HealthPoint -= hitPoint;
+                    OnDamage?.Invoke();
+                    if (HealthPoint <= 0)
+                    {
+                        Death();
+                    }
+                }
+            }
+        }
+
+        public void Death()
+        {
+            IsDead = true;
+            OnDeath?.Invoke();
+            Destroy(gameObject);
         }
     }
 }

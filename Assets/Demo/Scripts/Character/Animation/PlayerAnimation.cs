@@ -1,22 +1,11 @@
-using Fadhli.Game.Module;
-using UnityEngine;
 using UnityEngine.Events;
 
 namespace Fadhli.Game.Module
 {
-    [RequireComponent(typeof(Character), typeof(CharacterController))]
-    public class PlayerAnimation : CharacterAnimation
+    public class PlayerAnimation : CombatAnimation
     {
         public UnityEvent OnBeginRollingAnimation;
         public UnityEvent OnEndRollingAnimation;
-        public UnityEvent OnBeginAttackingAnimation;
-        public UnityEvent OnEndAttackingAnimation;
-        public UnityEvent OnBeginTraceHitAnimation;
-        public UnityEvent OnEndTraceHitAnimation;
-        public UnityEvent OnBeginHeavyAttackingAnimation;
-        public UnityEvent OnEndHeavyAttackingAnimation;
-        public UnityEvent OnBeginBlockAnimation;
-        public UnityEvent OnEndBlockAnimation;
         public UnityEvent OnBeginParryAnimation;
         public UnityEvent OnEndParryAnimation;
 
@@ -34,51 +23,6 @@ namespace Fadhli.Game.Module
             OnEndRollingAnimation?.Invoke();
         }
 
-        public void OnCharacterBeginAttack(int combo)
-        {
-            _animator.applyRootMotion = true;
-            _animator.SetBool("IsAttacking", true);
-            _animator.SetInteger("Combo", combo);
-            OnBeginAttackingAnimation?.Invoke();
-        }
-
-        public void OnCharacterEndAttack()
-        {
-            _animator.SetBool("IsAttacking", false);
-            _animator.applyRootMotion = false;
-            OnEndAttackingAnimation?.Invoke();
-        }
-
-        public void OnCharacterBeginHeavyAttack(EWeaponType type)
-        {
-            _animator.applyRootMotion = true;
-            _animator.SetBool("IsHeavyAttack", true);
-            _animator.SetBool("IsUsingBow", (type == EWeaponType.Range));
-            _animator.SetBool("IsUsingSpell", (type == EWeaponType.Spell));
-            _animator.SetBool("IsAttacking", true);
-            OnBeginHeavyAttackingAnimation?.Invoke();
-        }
-
-        public void OnCharacterEndHeavyAttack()
-        {
-            _animator.SetBool("IsAttacking", false);
-            _animator.SetBool("IsHeavyAttack", false);
-            _animator.SetBool("IsUsingBow", false);
-            _animator.SetBool("IsUsingSpell", false);
-            _animator.applyRootMotion = false;
-            OnEndHeavyAttackingAnimation?.Invoke();
-        }
-
-        public void OnStartTracingHit()
-        {
-            OnBeginTraceHitAnimation?.Invoke();
-        }
-
-        public void OnEndTracingHit()
-        {
-            OnEndTraceHitAnimation?.Invoke();
-        }
-
         public void OnBeginLockTarget()
         {
             _animator.SetBool("IsLockTarget", true);
@@ -87,18 +31,6 @@ namespace Fadhli.Game.Module
         public void OnEndLockTarget()
         {
             _animator.SetBool("IsLockTarget", false);
-        }
-
-        public void OnCharacterBeginBlock()
-        {
-            _animator.SetLayerWeight(1, 1);
-            OnBeginBlockAnimation?.Invoke();
-        }
-
-        public void OnCharacterStopBlock()
-        {
-            _animator.SetLayerWeight(1, 0);
-            OnEndBlockAnimation?.Invoke();
         }
 
         public void OnCharacterParry()
