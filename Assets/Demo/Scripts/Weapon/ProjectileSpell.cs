@@ -33,7 +33,7 @@ public class ProjectileSpell : MonoBehaviour
     {
         if (_isLaunched)
         {
-            _rigidbody.velocity = _direction.normalized * _speed * Time.deltaTime;
+            _rigidbody.linearVelocity = _direction.normalized * _speed * Time.deltaTime;
             transform.forward = _direction;
         }
     }

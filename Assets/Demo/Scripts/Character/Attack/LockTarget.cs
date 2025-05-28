@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Cinemachine;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,11 +11,9 @@ namespace Fadhli.Game.Module
         [SerializeField]
         private float _maxLockDistance = 2f;
         [SerializeField]
-        private CinemachineVirtualCamera _lockCamera;
+        private CinemachineCamera _lockCamera;
         [SerializeField]
-        private CinemachineFreeLook _camera;
-        [SerializeField]
-        private CinemachineTargetGroup _targetGroupCamera;
+        private CinemachineOrbitalFollow _thirdPersonCamera;
         [SerializeField]
         private float _rotationSpeed = 1f;
 
@@ -34,18 +32,6 @@ namespace Fadhli.Game.Module
         private void OnDisable()
         {
             InputManager.Instance.OnLockTargetInput -= OnLockTargetInput;
-        }
-
-        private void Start()
-        {
-            if (!_camera)
-            {
-                _camera = FindObjectOfType<CinemachineFreeLook>();
-            }
-            if (!_targetGroupCamera)
-            {
-                _targetGroupCamera = FindObjectOfType<CinemachineTargetGroup>();
-            }
         }
 
         public void OnLockTargetInput()
@@ -68,7 +54,7 @@ namespace Fadhli.Game.Module
         {
             IsLockTarget = true;
             Target = enemy;
-            _lockCamera.Priority = 11;
+            _lockCamera.Priority.Value = 2;
             enemy.OnDeath.AddListener(StopLockTarget);
             OnStartLockTarget?.Invoke();
         }
@@ -78,8 +64,8 @@ namespace Fadhli.Game.Module
             IsLockTarget = false;
             OnStopLockTarget?.Invoke();
             Target = null;
-            _camera.m_XAxis.Value = transform.eulerAngles.y;
-            _lockCamera.Priority = 9;
+            _thirdPersonCamera.HorizontalAxis.Value = transform.eulerAngles.y;
+            _lockCamera.Priority.Value = 0;
         }
 
         private EnemyCharacter GetClosestEnemy()
