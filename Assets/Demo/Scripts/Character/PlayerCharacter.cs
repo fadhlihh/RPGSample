@@ -28,6 +28,7 @@ namespace Fadhli.Game.Module
 
 
         public UnityEvent OnCharacterRoll => _onCharacterRoll;
+        public UnityEvent OnBounceback;
 
         public bool IsRolling { get; private set; }
 
@@ -99,54 +100,72 @@ namespace Fadhli.Game.Module
             DirectionalCharacterMovement.IsAbleToMove = true;
         }
 
-        public void Damage(int hitPoint, Vector3 hitImpact)
+        public void Damage(Character instigator, int hitPoint, Vector3 hitImpact)
         {
+            EnemyCharacter enemyCharacter = instigator as EnemyCharacter;
             if (!IsDead)
             {
-                HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0));
-                HUDManager.Instance.CharacterUI.SetHealthBarValue(HealthPoint);
-                if (!CharacterDefense.IsBlocking)
+                if (CharacterDefense.IsParrying)
                 {
-                    OnDamage?.Invoke();
+                    enemyCharacter?.KnockBack();
                 }
                 else
                 {
-                    DecreaseStamina(30);
-                    if (!GetIsStaminaAvailable(30))
+                    HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0));
+                    HUDManager.Instance.CharacterUI.SetHealthBarValue(HealthPoint);
+                    if (!CharacterDefense.IsBlocking)
                     {
-                        CharacterDefense.StopBlock();
+                        OnDamage?.Invoke();
                     }
-                }
-                if (HealthPoint <= 0)
-                {
-                    Death();
+                    else
+                    {
+                        enemyCharacter.BounceBack();
+                        DecreaseStamina(30);
+                        if (!GetIsStaminaAvailable(30))
+                        {
+                            CharacterDefense.StopBlock();
+                        }
+                    }
+                    if (HealthPoint <= 0)
+                    {
+                        Death();
+                    }
                 }
             }
-            Instantiate(_impactPrefab, transform.position, Quaternion.identity);
+            Instantiate(_impactPrefab, hitImpact, Quaternion.identity);
         }
 
-        public void Damage(int hitPoint)
+        public void Damage(Character instigator, int hitPoint)
         {
+            EnemyCharacter enemyCharacter = instigator as EnemyCharacter;
             Instantiate(_impactPrefab, transform.position, Quaternion.identity);
             if (!IsDead)
             {
-                HealthPoint -= HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0)); ;
-                HUDManager.Instance.CharacterUI.SetHealthBarValue(HealthPoint);
-                if (!CharacterDefense.IsBlocking)
+                if (CharacterDefense.IsParrying)
                 {
-                    OnDamage?.Invoke();
+                    enemyCharacter?.KnockBack();
                 }
                 else
                 {
-                    DecreaseStamina(30);
-                    if (!GetIsStaminaAvailable(30))
+                    HealthPoint -= HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0)); ;
+                    HUDManager.Instance.CharacterUI.SetHealthBarValue(HealthPoint);
+                    if (!CharacterDefense.IsBlocking)
                     {
-                        CharacterDefense.StopBlock();
+                        OnDamage?.Invoke();
                     }
-                }
-                if (HealthPoint <= 0)
-                {
-                    Death();
+                    else
+                    {
+                        enemyCharacter.BounceBack();
+                        DecreaseStamina(30);
+                        if (!GetIsStaminaAvailable(30))
+                        {
+                            CharacterDefense.StopBlock();
+                        }
+                    }
+                    if (HealthPoint <= 0)
+                    {
+                        Death();
+                    }
                 }
             }
         }
@@ -183,6 +202,63 @@ namespace Fadhli.Game.Module
         public bool GetIsStaminaAvailable(int value)
         {
             return Stamina > value;
+        }
+
+        public void Damage(int hitPoint, Vector3 hitImpact)
+        {
+            if (!IsDead)
+            {
+                HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0));
+                HUDManager.Instance.CharacterUI.SetHealthBarValue(HealthPoint);
+                if (!CharacterDefense.IsBlocking)
+                {
+                    OnDamage?.Invoke();
+                }
+                else
+                {
+                    DecreaseStamina(30);
+                    if (!GetIsStaminaAvailable(30))
+                    {
+                        CharacterDefense.StopBlock();
+                    }
+                }
+                if (HealthPoint <= 0)
+                {
+                    Death();
+                }
+            }
+            Instantiate(_impactPrefab, hitImpact, Quaternion.identity);
+        }
+
+        public void Damage(int hitPoint)
+        {
+            Instantiate(_impactPrefab, transform.position, Quaternion.identity);
+            if (!IsDead)
+            {
+                HealthPoint -= HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0)); ;
+                HUDManager.Instance.CharacterUI.SetHealthBarValue(HealthPoint);
+                if (!CharacterDefense.IsBlocking)
+                {
+                    OnDamage?.Invoke();
+                }
+                else
+                {
+                    DecreaseStamina(30);
+                    if (!GetIsStaminaAvailable(30))
+                    {
+                        CharacterDefense.StopBlock();
+                    }
+                }
+                if (HealthPoint <= 0)
+                {
+                    Death();
+                }
+            }
+        }
+
+        public void BounceBack()
+        {
+            OnBounceback?.Invoke();
         }
     }
 }

@@ -4622,6 +4622,21 @@ MonoBehaviour:
         m_CallState: 2
   _stamina: 100
   _staminaRegenSpeed: 10
+  OnBounceback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 101737877}
+        m_TargetAssemblyTypeName: CombatAnimation, Assembly-CSharp
+        m_MethodName: OnCharacterBounceBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!137 &602063650356743322
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -10114,6 +10129,36 @@ MonoBehaviour:
     type: 3}
   _characterDefense: {fileID: 0}
   _enemyUI: {fileID: 7389507112053611997}
+  OnKnockback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7389507112053611990}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.EnemyAnimation, Assembly-CSharp
+        m_MethodName: OnCharacterKnockback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnBounceback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7389507112053611990}
+        m_TargetAssemblyTypeName: CombatAnimation, Assembly-CSharp
+        m_MethodName: OnCharacterBounceBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7389507112053611990
 MonoBehaviour:
   m_ObjectHideFlags: 0

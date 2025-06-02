@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Fadhli.Game.Module
 {
@@ -17,6 +18,8 @@ namespace Fadhli.Game.Module
 
         public CharacterDefense CharacterDefense { get => _characterDefense; }
         public EnemyUI EnemyUI { get => _enemyUI; }
+        public UnityEvent OnKnockback;
+        public UnityEvent OnBounceback;
 
         public int HealthPoint { get; private set; } = 100;
         public bool IsDead { get; private set; } = false;
@@ -30,9 +33,10 @@ namespace Fadhli.Game.Module
             }
         }
 
-        public void Damage(int hitPoint)
+        public void Damage(Character instigator, int hitPoint)
         {
             Instantiate(_impactPrefab, transform.position, Quaternion.identity);
+            PlayerCharacter playerCharacter = instigator as PlayerCharacter;
             if (!IsDead)
             {
                 HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0));
@@ -40,6 +44,33 @@ namespace Fadhli.Game.Module
                 if (!CharacterDefense.IsBlocking)
                 {
                     OnDamage?.Invoke();
+                }
+                else
+                {
+                    playerCharacter.BounceBack();
+                }
+                if (HealthPoint <= 0)
+                {
+                    Death();
+                }
+            }
+        }
+
+        public void Damage(Character instigator, int hitPoint, Vector3 hitImpact)
+        {
+            Instantiate(_impactPrefab, hitImpact, Quaternion.identity);
+            PlayerCharacter playerCharacter = instigator as PlayerCharacter;
+            if (!IsDead)
+            {
+                HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0));
+                EnemyUI.SetHealthBarValue(HealthPoint);
+                if (!CharacterDefense.IsBlocking)
+                {
+                    OnDamage?.Invoke();
+                }
+                else
+                {
+                    playerCharacter.BounceBack();
                 }
                 if (HealthPoint <= 0)
                 {
@@ -66,11 +97,39 @@ namespace Fadhli.Game.Module
             }
         }
 
+        public void Damage(int hitPoint)
+        {
+            Instantiate(_impactPrefab, transform.position, Quaternion.identity);
+            if (!IsDead)
+            {
+                HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0));
+                EnemyUI.SetHealthBarValue(HealthPoint);
+                if (!CharacterDefense.IsBlocking)
+                {
+                    OnDamage?.Invoke();
+                }
+                if (HealthPoint <= 0)
+                {
+                    Death();
+                }
+            }
+        }
+
         public void Death()
         {
             IsDead = true;
             OnDeath?.Invoke();
             Destroy(gameObject);
+        }
+
+        public void KnockBack()
+        {
+            OnKnockback?.Invoke();
+        }
+
+        public void BounceBack()
+        {
+            OnBounceback?.Invoke();
         }
     }
 }

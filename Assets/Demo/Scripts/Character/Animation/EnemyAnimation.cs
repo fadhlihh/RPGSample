@@ -6,6 +6,9 @@ namespace Fadhli.Game.Module
 {
     public class EnemyAnimation : CombatAnimation
     {
-
+        public void OnCharacterKnockback()
+        {
+            _animator.Play("Parry Reaction");
+        }
     }
 }

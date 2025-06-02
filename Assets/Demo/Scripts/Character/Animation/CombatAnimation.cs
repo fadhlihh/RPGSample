@@ -74,4 +74,9 @@ public class CombatAnimation : CharacterAnimation
     {
         _animator.Play("Hit_In_Place");
     }
+
+    public void OnCharacterBounceBack()
+    {
+        _animator.Play("Bounce Back");
+    }
 }

@@ -23,6 +23,9 @@ public abstract class Weapon : MonoBehaviour
     private Vector3 _hitboxOffset = new Vector3(0, 0, 0);
     [SerializeField]
     private LayerMask _hitableLayer;
+    [SerializeField]
+    private Character _ownerCharacter;
+
     private Coroutine _resetComboTimerCoroutine;
     private HashSet<Collider> _alreadyHit = new HashSet<Collider>();
     protected int _damageModifier;
@@ -52,6 +55,14 @@ public abstract class Weapon : MonoBehaviour
         _damageModifier = 0;
     }
 
+    private void Start()
+    {
+        if (!_ownerCharacter)
+        {
+            _ownerCharacter = GetComponentInParent<Character>();
+        }
+    }
+
     private void CountCombo()
     {
         Combo = Combo >= _maxCombo ? 1 : Combo + 1;
@@ -79,7 +90,7 @@ public abstract class Weapon : MonoBehaviour
                 if (!_alreadyHit.Contains(hit))
                 {
                     _alreadyHit.Add(hit);
-                    hit.GetComponent<IDamagable>().Damage(_damage + _damageModifier, hit.ClosestPoint(center));
+                    hit.GetComponent<IDamagable>().Damage(_ownerCharacter, _damage + _damageModifier, hit.ClosestPoint(center));
                 }
             }
         }
