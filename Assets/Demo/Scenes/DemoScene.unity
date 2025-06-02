@@ -370,7 +370,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ed1074391f139544d941ae0870937dc0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a042af83dea920e4382dd0ef5848a637, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2410,6 +2410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 549883860}
+  _staminaBar: {fileID: 1648194601}
 --- !u!1 &1487747725
 GameObject:
   m_ObjectHideFlags: 0
@@ -4619,6 +4620,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _stamina: 100
+  _staminaRegenSpeed: 10
 --- !u!137 &602063650356743322
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -10498,6 +10501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001ee25d18d49b541b71054879980fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyUI: {fileID: 813394691}
   _healthBar: {fileID: 1778715940}
   _target: {fileID: 294990084}
 --- !u!1 &7404773783638907618

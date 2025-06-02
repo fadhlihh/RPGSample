@@ -1,12 +1,10 @@
-using System.Diagnostics;
-using Fadhli.Game.Module;
-using UnityEditor.Experimental.GraphView;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Fadhli.Game.Module
 {
-    public class PlayerCharacter : Character, IRolling, IDamagable
+    public class PlayerCharacter : Character, IRolling, IDamagable, IStamina
     {
         [SerializeField]
         private PlayerWeaponEquipmentManager _weaponEquipmentManager;
@@ -16,6 +14,10 @@ namespace Fadhli.Game.Module
         private GameObject _impactPrefab;
         [SerializeField]
         private UnityEvent _onCharacterRoll;
+        [SerializeField]
+        private float _stamina = 100;
+        [SerializeField]
+        private int _staminaRegenSpeed = 1;
 
         public PlayerWeaponEquipmentManager WeaponEquipmentManager { get { return _weaponEquipmentManager; } }
         private bool _isFirstPerson;
@@ -32,6 +34,7 @@ namespace Fadhli.Game.Module
         public int HealthPoint { get; private set; } = 100;
 
         public bool IsDead { get; private set; }
+        public float Stamina { get => _stamina; }
 
         protected override void Awake()
         {
@@ -78,8 +81,9 @@ namespace Fadhli.Game.Module
 
         public void Roll()
         {
-            if (DirectionalCharacterMovement.MoveDirection.magnitude > 0.01f && !WeaponEquipmentManager.IsAttacking)
+            if (DirectionalCharacterMovement.MoveDirection.magnitude > 0.01f && !WeaponEquipmentManager.IsAttacking && GetIsStaminaAvailable(40))
             {
+                DecreaseStamina(40);
                 DirectionalCharacterMovement.IsAbleToMove = false;
                 IsRolling = true;
                 Transform cameraTransform = Camera.main.transform;
@@ -105,6 +109,14 @@ namespace Fadhli.Game.Module
                 {
                     OnDamage?.Invoke();
                 }
+                else
+                {
+                    DecreaseStamina(30);
+                    if (!GetIsStaminaAvailable(30))
+                    {
+                        CharacterDefense.StopBlock();
+                    }
+                }
                 if (HealthPoint <= 0)
                 {
                     Death();
@@ -124,6 +136,14 @@ namespace Fadhli.Game.Module
                 {
                     OnDamage?.Invoke();
                 }
+                else
+                {
+                    DecreaseStamina(30);
+                    if (!GetIsStaminaAvailable(30))
+                    {
+                        CharacterDefense.StopBlock();
+                    }
+                }
                 if (HealthPoint <= 0)
                 {
                     Death();
@@ -136,6 +156,33 @@ namespace Fadhli.Game.Module
             IsDead = true;
             OnDeath?.Invoke();
             Destroy(gameObject);
+        }
+
+        public void DecreaseStamina(float value)
+        {
+            _stamina -= value;
+            _stamina = Mathf.Clamp(_stamina, 0, 100);
+            HUDManager.Instance.CharacterUI.SetStaminaBarValue(Stamina);
+        }
+
+        public void IncreaseStamina(float value)
+        {
+            _stamina += value;
+            _stamina = Mathf.Clamp(_stamina, 0, 100);
+            HUDManager.Instance.CharacterUI.SetStaminaBarValue(Stamina);
+        }
+
+        public void Update()
+        {
+            if (!CharacterMovement.IsSprint)
+            {
+                IncreaseStamina(_staminaRegenSpeed * Time.deltaTime);
+            }
+        }
+
+        public bool GetIsStaminaAvailable(int value)
+        {
+            return Stamina > value;
         }
     }
 }

@@ -4,13 +4,15 @@ using UnityEngine.UI;
 public class EnemyUI : MonoBehaviour
 {
     [SerializeField]
+    private Canvas _enemyUI;
+    [SerializeField]
     private Image _healthBar;
     [SerializeField]
     private Image _target;
 
     private void Update()
     {
-        transform.LookAt(Camera.main.transform);
+        _enemyUI.transform.LookAt(Camera.main.transform);
     }
 
     public void SetHealthBarValue(float value)

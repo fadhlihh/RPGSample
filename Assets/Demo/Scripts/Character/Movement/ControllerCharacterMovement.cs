@@ -47,6 +47,16 @@ namespace Fadhli.Game.Module
         protected void Update()
         {
             base.Update();
+            IStamina staminaSystem = GetComponent<IStamina>();
+            bool IsStaminaAvaliable = staminaSystem != null ? GetComponent<IStamina>().GetIsStaminaAvailable(5) : true;
+            if (!IsStaminaAvaliable)
+            {
+                IsSprint = false;
+            }
+            if (IsStaminaAvaliable && IsSprint)
+            {
+                staminaSystem.DecreaseStamina(10 * Time.deltaTime);
+            }
             CalculateAcceleration();
             ResetVelocityY();
             Move();

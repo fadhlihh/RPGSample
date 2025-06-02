@@ -40,11 +40,14 @@ public abstract class WeaponEquipmentManager : MonoBehaviour
     {
         bool isRolling = GetComponent<IRolling>() != null ? GetComponent<IRolling>().IsRolling : false;
         bool isGrounded = GetComponent<CharacterMovement>() != null ? GetComponent<CharacterMovement>().IsGrounded : true;
-        if (!IsAttacking && isGrounded && !isRolling)
+        IStamina staminaSystem = GetComponent<IStamina>();
+        bool isStaminaAvailable = staminaSystem != null ? GetComponent<IStamina>().GetIsStaminaAvailable(20) : true;
+        if (!IsAttacking && isGrounded && !isRolling && isStaminaAvailable)
         {
             IsAttacking = true;
             _playerWeapons[_currentWeaponIndex].LightAttack();
             OnAttack.Invoke(_playerWeapons[_currentWeaponIndex].Combo);
+            staminaSystem?.DecreaseStamina(20);
         }
     }
 
@@ -52,12 +55,15 @@ public abstract class WeaponEquipmentManager : MonoBehaviour
     {
         bool isRolling = GetComponent<IRolling>() != null ? GetComponent<IRolling>().IsRolling : false;
         bool isGrounded = GetComponent<CharacterMovement>() != null ? GetComponent<CharacterMovement>().IsGrounded : true;
-        if (!IsAttacking && isGrounded && !isRolling)
+        IStamina staminaSystem = GetComponent<IStamina>();
+        bool isStaminaAvailable = staminaSystem != null ? GetComponent<IStamina>().GetIsStaminaAvailable(40) : true;
+        if (!IsAttacking && isGrounded && !isRolling && isStaminaAvailable)
         {
             IsAttacking = true;
             IsHeavyAttack = true;
             _playerWeapons[_currentWeaponIndex].HeavyAttack();
             OnHeavyAttack.Invoke(_playerWeapons[_currentWeaponIndex].Type);
+            staminaSystem?.DecreaseStamina(40);
         }
     }
 
