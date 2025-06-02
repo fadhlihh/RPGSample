@@ -9,6 +9,8 @@ namespace Fadhli.Game.Module
         public void OnCharacterKnockback()
         {
             _animator.Play("Parry Reaction");
+            OnCharacterEndAttack();
+            OnCharacterEndHeavyAttack();
         }
     }
 }

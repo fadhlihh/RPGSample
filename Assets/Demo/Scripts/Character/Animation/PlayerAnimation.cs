@@ -36,6 +36,8 @@ namespace Fadhli.Game.Module
         public void OnCharacterParry()
         {
             _animator.Play("Parry");
+            OnCharacterEndAttack();
+            OnCharacterEndHeavyAttack();
             OnBeginParryAnimation?.Invoke();
         }
 

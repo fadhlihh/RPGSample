@@ -265,6 +265,24 @@ MonoBehaviour:
   OnEndBlockAnimation:
     m_PersistentCalls:
       m_Calls: []
+  OnBeginDeathAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndDeathAnimation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 599491909593121192}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.PlayerCharacter, Assembly-CSharp
+        m_MethodName: DestroyCharacter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnBeginRollingAnimation:
     m_PersistentCalls:
       m_Calls: []
@@ -4600,7 +4618,31 @@ MonoBehaviour:
         m_CallState: 2
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5939338231251299811}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.CharacterMovement, Assembly-CSharp
+        m_MethodName: set_IsAbleToMove
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 101737877}
+        m_TargetAssemblyTypeName: CombatAnimation, Assembly-CSharp
+        m_MethodName: OnStartCharacterDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _weaponEquipmentManager: {fileID: 0}
   _characterDefense: {fileID: 0}
   _impactPrefab: {fileID: 3077343761403282166, guid: f78aaaec3b393e24ca74cd6de8194347,
@@ -4629,6 +4671,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: CombatAnimation, Assembly-CSharp
         m_MethodName: OnCharacterBounceBack
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5939338231251299815}
+        m_TargetAssemblyTypeName: WeaponEquipmentManager, Assembly-CSharp
+        m_MethodName: set_IsHeavyAttack
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5939338231251299815}
+        m_TargetAssemblyTypeName: WeaponEquipmentManager, Assembly-CSharp
+        m_MethodName: set_IsAttacking
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9229,6 +9295,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5939338231251299815}
+        m_TargetAssemblyTypeName: WeaponEquipmentManager, Assembly-CSharp
+        m_MethodName: set_IsAttacking
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5939338231251299815}
+        m_TargetAssemblyTypeName: WeaponEquipmentManager, Assembly-CSharp
+        m_MethodName: set_IsHeavyAttack
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5939338231251299817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10124,7 +10214,31 @@ MonoBehaviour:
         m_CallState: 2
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7389507112053611994}
+        m_TargetAssemblyTypeName: AIController, Assembly-CSharp
+        m_MethodName: set_IsAbleToMove
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7389507112053611990}
+        m_TargetAssemblyTypeName: CombatAnimation, Assembly-CSharp
+        m_MethodName: OnStartCharacterDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _impactPrefab: {fileID: 3077343761403282166, guid: f78aaaec3b393e24ca74cd6de8194347,
     type: 3}
   _characterDefense: {fileID: 0}
@@ -10151,6 +10265,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: CombatAnimation, Assembly-CSharp
         m_MethodName: OnCharacterBounceBack
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7389507112053611991}
+        m_TargetAssemblyTypeName: WeaponEquipmentManager, Assembly-CSharp
+        m_MethodName: set_IsAttacking
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7389507112053611991}
+        m_TargetAssemblyTypeName: WeaponEquipmentManager, Assembly-CSharp
+        m_MethodName: set_IsHeavyAttack
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10268,6 +10406,24 @@ MonoBehaviour:
   OnEndBlockAnimation:
     m_PersistentCalls:
       m_Calls: []
+  OnBeginDeathAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndDeathAnimation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7389507112053611989}
+        m_TargetAssemblyTypeName: Fadhli.Game.Module.EnemyCharacter, Assembly-CSharp
+        m_MethodName: DestroyCharacter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7389507112053611991
 MonoBehaviour:
   m_ObjectHideFlags: 0

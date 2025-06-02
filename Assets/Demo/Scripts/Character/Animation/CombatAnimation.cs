@@ -12,6 +12,8 @@ public class CombatAnimation : CharacterAnimation
     public UnityEvent OnEndHeavyAttackingAnimation;
     public UnityEvent OnBeginBlockAnimation;
     public UnityEvent OnEndBlockAnimation;
+    public UnityEvent OnBeginDeathAnimation;
+    public UnityEvent OnEndDeathAnimation;
 
     public void OnCharacterBeginAttack(int combo)
     {
@@ -78,5 +80,18 @@ public class CombatAnimation : CharacterAnimation
     public void OnCharacterBounceBack()
     {
         _animator.Play("Bounce Back");
+        OnCharacterEndAttack();
+        OnCharacterEndHeavyAttack();
+    }
+
+    public void OnStartCharacterDeath()
+    {
+        _animator.Play("Death");
+        OnBeginDeathAnimation?.Invoke();
+    }
+
+    public void OnEndCharacterDeath()
+    {
+        OnEndDeathAnimation?.Invoke();
     }
 }

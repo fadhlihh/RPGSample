@@ -119,7 +119,11 @@ namespace Fadhli.Game.Module
         {
             IsDead = true;
             OnDeath?.Invoke();
-            Destroy(gameObject);
+        }
+
+        public void DestroyCharacter()
+        {
+            Destroy(gameObject, 3);
         }
 
         public void KnockBack()
