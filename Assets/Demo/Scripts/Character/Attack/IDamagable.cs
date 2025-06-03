@@ -13,6 +13,7 @@ namespace Fadhli.Game.Module
         public void Damage(Character instigator, int hitPoint);
         public void Damage(int hitPoint, Vector3 hitImpact);
         public void Damage(int hitPoint);
+        public void Heal(int value);
 
         public void Death();
     }

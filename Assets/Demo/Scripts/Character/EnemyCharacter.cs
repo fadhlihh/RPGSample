@@ -135,5 +135,10 @@ namespace Fadhli.Game.Module
         {
             OnBounceback?.Invoke();
         }
+
+        public void Heal(int value)
+        {
+
+        }
     }
 }

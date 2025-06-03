@@ -18,6 +18,7 @@ namespace Fadhli.Game
         public Action OnStartBlockInput;
         public Action OnStopBlockInput;
         public Action OnParryInput;
+        public Action OnUseItemInput;
 
         private IA_Default _inputAction;
         public InputManager()
@@ -115,6 +116,14 @@ namespace Fadhli.Game
             if (context.performed)
             {
                 OnParryInput?.Invoke();
+            }
+        }
+
+        public void OnUseItem(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnUseItemInput?.Invoke();
             }
         }
     }

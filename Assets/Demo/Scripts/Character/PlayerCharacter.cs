@@ -11,6 +11,8 @@ namespace Fadhli.Game.Module
         [SerializeField]
         private CharacterDefense _characterDefense;
         [SerializeField]
+        private ItemManager _itemManager;
+        [SerializeField]
         private GameObject _impactPrefab;
         [SerializeField]
         private UnityEvent _onCharacterRoll;
@@ -19,12 +21,13 @@ namespace Fadhli.Game.Module
         [SerializeField]
         private int _staminaRegenSpeed = 1;
 
-        public PlayerWeaponEquipmentManager WeaponEquipmentManager { get { return _weaponEquipmentManager; } }
         private bool _isFirstPerson;
 
+        public PlayerWeaponEquipmentManager WeaponEquipmentManager { get { return _weaponEquipmentManager; } }
         public bool IsFirstPerson { get { return _isFirstPerson; } set { _isFirstPerson = value; } }
         public DirectionalCharacterMovement DirectionalCharacterMovement { get; private set; }
         public CharacterDefense CharacterDefense { get => _characterDefense; }
+        public ItemManager ItemManager { get => _itemManager; }
 
 
         public UnityEvent OnCharacterRoll => _onCharacterRoll;
@@ -50,6 +53,10 @@ namespace Fadhli.Game.Module
             {
                 _characterDefense = GetComponent<CharacterDefense>();
             }
+            if (!_itemManager)
+            {
+                _itemManager = GetComponent<ItemManager>();
+            }
         }
 
         private void OnEnable()
@@ -64,6 +71,7 @@ namespace Fadhli.Game.Module
             InputManager.Instance.OnStartBlockInput += CharacterDefense.StartBlock;
             InputManager.Instance.OnStopBlockInput += CharacterDefense.StopBlock;
             InputManager.Instance.OnParryInput += CharacterDefense.Parry;
+            InputManager.Instance.OnUseItemInput += ItemManager.UseItem;
         }
 
         private void OnDisable()
@@ -78,6 +86,7 @@ namespace Fadhli.Game.Module
             InputManager.Instance.OnStartBlockInput -= CharacterDefense.StartBlock;
             InputManager.Instance.OnStopBlockInput -= CharacterDefense.StopBlock;
             InputManager.Instance.OnParryInput -= CharacterDefense.Parry;
+            InputManager.Instance.OnUseItemInput -= ItemManager.UseItem;
         }
 
         public void Roll()
@@ -264,6 +273,13 @@ namespace Fadhli.Game.Module
         public void BounceBack()
         {
             OnBounceback?.Invoke();
+        }
+
+        public void Heal(int value)
+        {
+            HealthPoint = HealthPoint + value;
+            HealthPoint = Mathf.Clamp(HealthPoint, 0, 100);
+            HUDManager.Instance.CharacterUI.SetHealthBarValue(HealthPoint);
         }
     }
 }
