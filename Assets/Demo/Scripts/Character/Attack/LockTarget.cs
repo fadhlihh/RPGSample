@@ -11,10 +11,6 @@ namespace Fadhli.Game.Module
         [SerializeField]
         private float _maxLockDistance = 2f;
         [SerializeField]
-        private CinemachineCamera _lockCamera;
-        [SerializeField]
-        private CinemachineOrbitalFollow _thirdPersonCamera;
-        [SerializeField]
         private float _rotationSpeed = 1f;
 
         public float MaxLockDistance { get { return _maxLockDistance; } }
@@ -58,7 +54,6 @@ namespace Fadhli.Game.Module
             {
                 Target.EnemyUI.ShowTarget();
             }
-            _lockCamera.Priority.Value = 2;
             enemy.OnDeath.AddListener(StopLockTarget);
             OnStartLockTarget?.Invoke();
         }
@@ -72,8 +67,6 @@ namespace Fadhli.Game.Module
                 Target.EnemyUI.HideTarget();
             }
             Target = null;
-            _thirdPersonCamera.HorizontalAxis.Value = transform.eulerAngles.y;
-            _lockCamera.Priority.Value = 0;
         }
 
         private EnemyCharacter GetClosestEnemy()

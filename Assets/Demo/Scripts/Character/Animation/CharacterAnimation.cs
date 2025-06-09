@@ -27,7 +27,7 @@ namespace Fadhli.Game.Module
             _ownerCharacter = GetComponent<Character>();
         }
 
-        protected void Update()
+        protected virtual void Update()
         {
             if (_ownerCharacter.CharacterMovement != null)
             {

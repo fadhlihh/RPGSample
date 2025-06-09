@@ -180,6 +180,15 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""dfc276f3-8c9b-42d2-b886-ed2f12bdb366"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -391,6 +400,17 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
                     ""action"": ""UseItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2210ca2a-4516-4b1e-8a02-d6c029b70cb5"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -437,6 +457,7 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         m_General_Block = m_General.FindAction("Block", throwIfNotFound: true);
         m_General_Parry = m_General.FindAction("Parry", throwIfNotFound: true);
         m_General_UseItem = m_General.FindAction("UseItem", throwIfNotFound: true);
+        m_General_Aim = m_General.FindAction("Aim", throwIfNotFound: true);
     }
 
     ~@IA_Default()
@@ -527,6 +548,7 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
     private readonly InputAction m_General_Block;
     private readonly InputAction m_General_Parry;
     private readonly InputAction m_General_UseItem;
+    private readonly InputAction m_General_Aim;
     /// <summary>
     /// Provides access to input actions defined in input action map "General".
     /// </summary>
@@ -578,6 +600,10 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "General/UseItem".
         /// </summary>
         public InputAction @UseItem => m_Wrapper.m_General_UseItem;
+        /// <summary>
+        /// Provides access to the underlying input action "General/Aim".
+        /// </summary>
+        public InputAction @Aim => m_Wrapper.m_General_Aim;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -634,6 +660,9 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
             @UseItem.started += instance.OnUseItem;
             @UseItem.performed += instance.OnUseItem;
             @UseItem.canceled += instance.OnUseItem;
+            @Aim.started += instance.OnAim;
+            @Aim.performed += instance.OnAim;
+            @Aim.canceled += instance.OnAim;
         }
 
         /// <summary>
@@ -675,6 +704,9 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
             @UseItem.started -= instance.OnUseItem;
             @UseItem.performed -= instance.OnUseItem;
             @UseItem.canceled -= instance.OnUseItem;
+            @Aim.started -= instance.OnAim;
+            @Aim.performed -= instance.OnAim;
+            @Aim.canceled -= instance.OnAim;
         }
 
         /// <summary>
@@ -811,5 +843,12 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnUseItem(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Aim" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAim(InputAction.CallbackContext context);
     }
 }

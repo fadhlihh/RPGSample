@@ -30,12 +30,16 @@ public class CombatAnimation : CharacterAnimation
         OnEndAttackingAnimation?.Invoke();
     }
 
-    public void OnCharacterBeginHeavyAttack(EWeaponType type)
+    public void OnCharacterSwitchWeapon(EWeaponType type)
+    {
+        _animator.SetBool("IsUsingBow", (type == EWeaponType.Range));
+        _animator.SetBool("IsUsingSpell", (type == EWeaponType.Spell));
+    }
+
+    public void OnCharacterBeginHeavyAttack()
     {
         _animator.applyRootMotion = true;
         _animator.SetBool("IsHeavyAttack", true);
-        _animator.SetBool("IsUsingBow", (type == EWeaponType.Range));
-        _animator.SetBool("IsUsingSpell", (type == EWeaponType.Spell));
         _animator.SetBool("IsAttacking", true);
         OnBeginHeavyAttackingAnimation?.Invoke();
     }
@@ -44,8 +48,6 @@ public class CombatAnimation : CharacterAnimation
     {
         _animator.SetBool("IsAttacking", false);
         _animator.SetBool("IsHeavyAttack", false);
-        _animator.SetBool("IsUsingBow", false);
-        _animator.SetBool("IsUsingSpell", false);
         _animator.applyRootMotion = false;
         OnEndHeavyAttackingAnimation?.Invoke();
     }

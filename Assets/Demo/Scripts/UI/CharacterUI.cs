@@ -7,6 +7,8 @@ public class CharacterUI : MonoBehaviour
     private Image _healthBar;
     [SerializeField]
     private Image _staminaBar;
+    [SerializeField]
+    private GameObject _aimCrosshair;
 
     public void SetHealthBarValue(float value)
     {
@@ -16,5 +18,15 @@ public class CharacterUI : MonoBehaviour
     public void SetStaminaBarValue(float value)
     {
         _staminaBar.fillAmount = value / 100;
+    }
+
+    public void ShowAimCrosshair()
+    {
+        _aimCrosshair.SetActive(true);
+    }
+
+    public void HideAimCrosshair()
+    {
+        _aimCrosshair.SetActive(false);
     }
 }

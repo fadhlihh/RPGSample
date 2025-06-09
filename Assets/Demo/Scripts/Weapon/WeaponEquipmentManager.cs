@@ -20,7 +20,7 @@ public abstract class WeaponEquipmentManager : MonoBehaviour
     public bool IsHeavyAttack { get; set; }
 
     public UnityEvent<int> OnAttack;
-    public UnityEvent<EWeaponType> OnHeavyAttack;
+    public UnityEvent OnHeavyAttack;
 
     protected abstract void InitSocket();
 
@@ -36,7 +36,7 @@ public abstract class WeaponEquipmentManager : MonoBehaviour
         InitSocket();
     }
 
-    public void LightAttack()
+    public virtual void LightAttack()
     {
         bool isRolling = GetComponent<IRolling>() != null ? GetComponent<IRolling>().IsRolling : false;
         bool isGrounded = GetComponent<CharacterMovement>() != null ? GetComponent<CharacterMovement>().IsGrounded : true;
@@ -62,7 +62,7 @@ public abstract class WeaponEquipmentManager : MonoBehaviour
             IsAttacking = true;
             IsHeavyAttack = true;
             _playerWeapons[_currentWeaponIndex].HeavyAttack();
-            OnHeavyAttack.Invoke(_playerWeapons[_currentWeaponIndex].Type);
+            OnHeavyAttack.Invoke();
             staminaSystem?.DecreaseStamina(40);
         }
     }

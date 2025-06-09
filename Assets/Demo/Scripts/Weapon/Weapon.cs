@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Fadhli.Game.Module;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class Weapon : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public abstract class Weapon : MonoBehaviour
     public string Name { get => _name; }
     public Sprite Icon { get => _icon; }
     public int Damage { get => _damage; }
+    public bool CanAim => Type == EWeaponType.Range || Type == EWeaponType.Spell;
     public int Combo { get; private set; } = 1;
     public bool IsTracingHit { get; private set; }
     public HashSet<Collider> AlreadyHit { get { return _alreadyHit; } }
@@ -115,4 +117,14 @@ public abstract class Weapon : MonoBehaviour
     }
 
     public abstract void HeavyAttack();
+
+    public virtual void StartAim()
+    {
+
+    }
+
+    public virtual void StopAim()
+    {
+
+    }
 }

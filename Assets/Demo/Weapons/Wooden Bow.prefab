@@ -843,37 +843,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0005662823, y: -0.0017816932, z: -0.000000022351742}
     m_Extent: {x: 0.0025453256, y: 0.011139343, z: 0.0693284}
   m_DirtyAABB: 0
---- !u!1 &6294006459361245769
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 361794454260657490}
-  m_Layer: 0
-  m_Name: ProjectileSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &361794454260657490
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6294006459361245769}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.299, y: 0.29749483, z: -0.0024048486}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1843106409629240393}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &6361162629582078020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,7 +1035,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 552594713259258865}
-  - {fileID: 361794454260657490}
   - {fileID: 4485460874147691792}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1115,8 +1083,15 @@ MonoBehaviour:
   _hitableLayer:
     serializedVersion: 2
     m_Bits: 64
+  _ownerCharacter: {fileID: 0}
   _distance: 1000
   _animator: {fileID: 0}
   _arrowProjectilePrefabs: {fileID: 1959729250425484, guid: 5187dfa4d8f19524e8bbf7c6894b7de7,
     type: 3}
-  _arrowProjectileSpawner: {fileID: 361794454260657490}
+  _arrowProjectileSpawner: {fileID: 0}
+  OnStartAim:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStopAim:
+    m_PersistentCalls:
+      m_Calls: []

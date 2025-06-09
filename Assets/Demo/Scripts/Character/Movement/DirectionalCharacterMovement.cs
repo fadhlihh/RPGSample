@@ -48,30 +48,21 @@ namespace Fadhli.Game.Module
                     transform.rotation = Quaternion.Euler(0f, smoothRotationAngle, 0f);
                 }
             }
-            else
+        }
+
+        public void AutoRotateCharacter()
+        {
+            Transform cameraPosition = Camera.main.transform;
+            transform.rotation = cameraPosition.rotation;
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+            if (!_orientRotationToMovement)
             {
-                transform.rotation = Quaternion.Euler(0f, cameraPosition.eulerAngles.y, 0f);
+                AutoRotateCharacter();
             }
-        }
-
-        public void Roll()
-        {
-            // bool isAttacking = GetComponent<CharacterAttack>() != null ? GetComponent<CharacterAttack>().IsAttacking : false;
-            // if (MoveDirection.magnitude > 0.01f && !isAttacking)
-            // {
-            //     IsAbleToMove = false;
-            //     Transform cameraTransform = Camera.main.transform;
-            //     float rotationAngle = GameHelper.GetRotationAngleFromInput(MoveDirection.x, MoveDirection.z) + cameraTransform.eulerAngles.y;
-            //     transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
-            //     IsRolling = true;
-            //     OnCharacterRoll?.Invoke();
-            // }
-        }
-
-        public void EndRoll()
-        {
-            // IsRolling = false;
-            // IsAbleToMove = true;
         }
     }
 }

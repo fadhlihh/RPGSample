@@ -34,7 +34,7 @@ namespace Fadhli.Game.Module
         public float VelocityY { get { return _velocity.y; } }
         public bool IsAbleToMove { get; set; } = true;
 
-        protected void Update()
+        protected virtual void Update()
         {
             CheckIsGrounded();
         }

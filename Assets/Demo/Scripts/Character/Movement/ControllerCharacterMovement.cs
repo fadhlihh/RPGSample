@@ -44,7 +44,7 @@ namespace Fadhli.Game.Module
             IsSprint = isSprint;
         }
 
-        protected void Update()
+        protected override void Update()
         {
             base.Update();
             IStamina staminaSystem = GetComponent<IStamina>();

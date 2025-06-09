@@ -19,6 +19,8 @@ namespace Fadhli.Game
         public Action OnStopBlockInput;
         public Action OnParryInput;
         public Action OnUseItemInput;
+        public Action OnStartAimInput;
+        public Action OnStopAimInput;
 
         private IA_Default _inputAction;
         public InputManager()
@@ -124,6 +126,18 @@ namespace Fadhli.Game
             if (context.performed)
             {
                 OnUseItemInput?.Invoke();
+            }
+        }
+
+        public void OnAim(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnStartAimInput?.Invoke();
+            }
+            if (context.canceled)
+            {
+                OnStopAimInput?.Invoke();
             }
         }
     }

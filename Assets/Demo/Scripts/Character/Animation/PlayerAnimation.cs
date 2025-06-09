@@ -46,7 +46,17 @@ namespace Fadhli.Game.Module
             OnEndParryAnimation?.Invoke();
         }
 
-        protected void Update()
+        public void OnCharacterBeginAim()
+        {
+            _animator.SetBool("IsAiming", true);
+        }
+
+        public void OnCharacterEndAim()
+        {
+            _animator.SetBool("IsAiming", false);
+        }
+
+        protected override void Update()
         {
             base.Update();
             if (_ownerCharacter.CharacterMovement != null)

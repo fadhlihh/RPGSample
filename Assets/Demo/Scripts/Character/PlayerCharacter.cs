@@ -72,6 +72,8 @@ namespace Fadhli.Game.Module
             InputManager.Instance.OnStopBlockInput += CharacterDefense.StopBlock;
             InputManager.Instance.OnParryInput += CharacterDefense.Parry;
             InputManager.Instance.OnUseItemInput += ItemManager.UseItem;
+            InputManager.Instance.OnStartAimInput += WeaponEquipmentManager.StartAim;
+            InputManager.Instance.OnStopAimInput += WeaponEquipmentManager.StopAim;
         }
 
         private void OnDisable()
@@ -87,11 +89,13 @@ namespace Fadhli.Game.Module
             InputManager.Instance.OnStopBlockInput -= CharacterDefense.StopBlock;
             InputManager.Instance.OnParryInput -= CharacterDefense.Parry;
             InputManager.Instance.OnUseItemInput -= ItemManager.UseItem;
+            InputManager.Instance.OnStartAimInput -= WeaponEquipmentManager.StartAim;
+            InputManager.Instance.OnStopAimInput -= WeaponEquipmentManager.StopAim;
         }
 
         public void Roll()
         {
-            if (DirectionalCharacterMovement.MoveDirection.magnitude > 0.01f && !WeaponEquipmentManager.IsAttacking && GetIsStaminaAvailable(40))
+            if (DirectionalCharacterMovement.MoveDirection.magnitude > 0.01f && !WeaponEquipmentManager.IsAttacking && GetIsStaminaAvailable(40) && !WeaponEquipmentManager.IsAiming)
             {
                 DecreaseStamina(40);
                 DirectionalCharacterMovement.IsAbleToMove = false;
