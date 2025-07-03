@@ -40,7 +40,7 @@ public abstract class Weapon : MonoBehaviour
     public bool IsTracingHit { get; private set; }
     public HashSet<Collider> AlreadyHit { get { return _alreadyHit; } }
 
-    public void StartTraceHit()
+    public virtual void StartTraceHit()
     {
         IsTracingHit = true;
         _alreadyHit.Clear();

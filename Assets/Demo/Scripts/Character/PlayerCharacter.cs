@@ -120,8 +120,8 @@ namespace Fadhli.Game.Module
             {
                 if (CharacterDefense.IsParrying)
                 {
-                    Debug.Log("Test");
                     enemyCharacter?.KnockBack();
+                    SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitParry, 0.5f, 1);
                 }
                 else
                 {
@@ -139,6 +139,7 @@ namespace Fadhli.Game.Module
                         {
                             CharacterDefense.StopBlock();
                         }
+                        SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitBlock, 0.5f, 1);
                     }
                     if (HealthPoint <= 0)
                     {
@@ -158,6 +159,7 @@ namespace Fadhli.Game.Module
                 if (CharacterDefense.IsParrying)
                 {
                     enemyCharacter?.KnockBack();
+                    SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitParry, 0.5f, 1);
                 }
                 else
                 {
@@ -175,6 +177,7 @@ namespace Fadhli.Game.Module
                         {
                             CharacterDefense.StopBlock();
                         }
+                        SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitBlock, 0.5f, 1);
                     }
                     if (HealthPoint <= 0)
                     {
@@ -239,6 +242,7 @@ namespace Fadhli.Game.Module
                     {
                         CharacterDefense.StopBlock();
                     }
+                    SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitBlock, 0.5f, 1);
                 }
                 if (HealthPoint <= 0)
                 {
@@ -266,6 +270,7 @@ namespace Fadhli.Game.Module
                     {
                         CharacterDefense.StopBlock();
                     }
+                    SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitBlock, 0.5f, 1);
                 }
                 if (HealthPoint <= 0)
                 {

@@ -9,6 +9,11 @@ namespace Fadhli.Game.Module
         public UnityEvent OnBeginParryAnimation;
         public UnityEvent OnEndParryAnimation;
 
+        public void PlayRollSFX()
+        {
+            SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.Roll, 0.75f, 1);
+        }
+
         public void OnCharacterBeginRoll()
         {
             _animator.applyRootMotion = true;

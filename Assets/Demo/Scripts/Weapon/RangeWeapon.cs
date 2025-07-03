@@ -31,6 +31,12 @@ public class RangeWeapon : Weapon
         }
     }
 
+    public override void StartTraceHit()
+    {
+        base.StartTraceHit();
+        SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.Woosh, 0.5f, 1);
+    }
+
     public override void HeavyAttack()
     {
         _animator.SetBool("IsFiring", true);
@@ -43,6 +49,7 @@ public class RangeWeapon : Weapon
             GameObject arrowObject = Instantiate(_arrowProjectilePrefabs, _arrowProjectileSpawner.position, _isAiming == true ? Quaternion.LookRotation(GetAimDirection()) : _arrowProjectileSpawner.rotation);
             ProjectileArrow projectileArrow = arrowObject.GetComponent<ProjectileArrow>();
             projectileArrow.Launch(_isAiming == true ? GetAimDirection() : arrowObject.transform.forward, _distance, 30);
+            SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.ArrowRelease, 0.5f, 1);
         }
     }
 

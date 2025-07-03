@@ -44,6 +44,7 @@ public class ItemManager : MonoBehaviour
     public void UseItem()
     {
         _items[0].Use(_ownerCharacter);
+        SFXManager.Instance.PlayAudio(ESFXType.Heal);
         if (_items.Count > 0)
         {
             UpdateItemSlotUI(_items[_currentIndex].ItemData.Icon, _items[_currentIndex].Quantity, true);

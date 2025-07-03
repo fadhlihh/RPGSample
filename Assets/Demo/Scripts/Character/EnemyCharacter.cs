@@ -48,6 +48,7 @@ namespace Fadhli.Game.Module
                 else
                 {
                     playerCharacter.BounceBack();
+                    SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitBlock, 0.5f, 1);
                 }
                 if (HealthPoint <= 0)
                 {
@@ -71,6 +72,7 @@ namespace Fadhli.Game.Module
                 else
                 {
                     playerCharacter.BounceBack();
+                    SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitBlock, 0.5f, 1);
                 }
                 if (HealthPoint <= 0)
                 {
@@ -90,6 +92,10 @@ namespace Fadhli.Game.Module
                 {
                     OnDamage?.Invoke();
                 }
+                else
+                {
+                    SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitBlock, 0.5f, 1);
+                }
                 if (HealthPoint <= 0)
                 {
                     Death();
@@ -107,6 +113,10 @@ namespace Fadhli.Game.Module
                 if (!CharacterDefense.IsBlocking)
                 {
                     OnDamage?.Invoke();
+                }
+                else
+                {
+                    SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitBlock, 0.5f, 1);
                 }
                 if (HealthPoint <= 0)
                 {
