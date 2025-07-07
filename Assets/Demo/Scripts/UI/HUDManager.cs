@@ -1,4 +1,3 @@
-using Fadhli.Framework;
 using UnityEngine;
 
 public class HUDManager : SingletonBehaviour<HUDManager>

@@ -1,26 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-namespace Fadhli.Framework
+public class Singleton<T> where T : class, new()
 {
-    public class Singleton<T> where T : class, new()
-    {
-        private static T _instance;
-        private static readonly object _lock = new object();
+    private static T _instance;
+    private static readonly object _lock = new object();
 
-        public static T Instance
+    public static T Instance
+    {
+        get
         {
-            get
+            lock (_lock)
             {
-                lock (_lock)
+                if (_instance == null)
                 {
-                    if (_instance == null)
-                    {
-                        _instance = new T();
-                    }
-                    return _instance;
+                    _instance = new T();
                 }
+                return _instance;
             }
         }
     }

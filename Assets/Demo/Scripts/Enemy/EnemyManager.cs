@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Fadhli.Framework;
 using UnityEngine;
 
 namespace Fadhli.Game.Module

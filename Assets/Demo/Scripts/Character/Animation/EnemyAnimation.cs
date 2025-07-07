@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Fadhli.Game.Module
+public class EnemyAnimation : CombatAnimation
 {
-    public class EnemyAnimation : CombatAnimation
+    public void OnCharacterKnockback()
     {
-        public void OnCharacterKnockback()
-        {
-            _animator.Play("Parry Reaction");
-            OnCharacterEndAttack();
-            OnCharacterEndHeavyAttack();
-        }
+        _animator.Play("Parry Reaction");
+        OnCharacterEndAttack();
+        OnCharacterEndHeavyAttack();
     }
 }

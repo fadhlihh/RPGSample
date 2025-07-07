@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Fadhli.Framework;
 using UnityEngine;
 
 public class SFXManager : SingletonBehaviour<SFXManager>
