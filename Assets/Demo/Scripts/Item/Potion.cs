@@ -1,4 +1,3 @@
-using Fadhli.Game.Module;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Potion", menuName = "Item/Potion", order = 0)]

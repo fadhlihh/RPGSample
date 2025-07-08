@@ -1,4 +1,3 @@
-using Fadhli.Game.Module;
 using UnityEngine;
 
 public class ProjectileSpell : MonoBehaviour

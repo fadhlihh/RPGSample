@@ -1,5 +1,4 @@
 using System;
-using Fadhli.Game.Module;
 using UnityEngine;
 
 [Serializable]

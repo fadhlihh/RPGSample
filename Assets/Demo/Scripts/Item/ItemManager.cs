@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Fadhli.Game.Module;
 using UnityEngine;
 
 public class ItemManager : MonoBehaviour

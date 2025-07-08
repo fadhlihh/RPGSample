@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Fadhli.Game.Module;
 using UnityEngine;
 using UnityEngine.Events;
 

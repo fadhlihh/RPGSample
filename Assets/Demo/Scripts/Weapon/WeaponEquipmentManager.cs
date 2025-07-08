@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using Fadhli.Game.Module;
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Events;
 
