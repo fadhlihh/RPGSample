@@ -10,9 +10,9 @@ public class CharacterUI : MonoBehaviour
     [SerializeField]
     private GameObject _aimCrosshair;
 
-    public void SetHealthBarValue(float value)
+    public void SetHealthBarValue(float value, float maxHealth)
     {
-        _healthBar.fillAmount = value / 100;
+        _healthBar.fillAmount = value / maxHealth;
     }
 
     public void SetStaminaBarValue(float value)

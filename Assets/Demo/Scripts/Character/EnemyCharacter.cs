@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,101 +15,36 @@ public class EnemyCharacter : Character, IDamagable
     public UnityEvent OnKnockback;
     public UnityEvent OnBounceback;
 
-    public int HealthPoint { get; private set; } = 100;
+    public int HealthPoint { get; private set; }
+    public int MaximumHealthPoint { get; private set; } = 100;
     public bool IsDead { get; private set; } = false;
+
 
     protected override void Awake()
     {
         base.Awake();
+        HealthPoint = MaximumHealthPoint;
         if (!_characterDefense)
         {
             _characterDefense = GetComponent<CharacterDefense>();
         }
     }
 
-    public void Damage(Character instigator, int hitPoint)
+    public void Damage(DamageData damageData)
     {
-        Instantiate(_impactPrefab, transform.position, Quaternion.identity);
-        PlayerCharacter playerCharacter = instigator as PlayerCharacter;
+        Instantiate(_impactPrefab, damageData.HitImpactPosition, Quaternion.identity);
+        PlayerCharacter playerCharacter = damageData.Instigator as PlayerCharacter;
         if (!IsDead)
         {
-            HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0));
-            EnemyUI.SetHealthBarValue(HealthPoint);
+            HealthPoint -= (damageData.HitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0));
+            EnemyUI.SetHealthBarValue(HealthPoint, MaximumHealthPoint);
             if (!CharacterDefense.IsBlocking)
             {
                 OnDamage?.Invoke();
             }
             else
             {
-                playerCharacter.BounceBack();
-                SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitBlock, 0.5f, 1);
-            }
-            if (HealthPoint <= 0)
-            {
-                Death();
-            }
-        }
-    }
-
-    public void Damage(Character instigator, int hitPoint, Vector3 hitImpact)
-    {
-        Instantiate(_impactPrefab, hitImpact, Quaternion.identity);
-        PlayerCharacter playerCharacter = instigator as PlayerCharacter;
-        if (!IsDead)
-        {
-            HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0));
-            EnemyUI.SetHealthBarValue(HealthPoint);
-            if (!CharacterDefense.IsBlocking)
-            {
-                OnDamage?.Invoke();
-            }
-            else
-            {
-                playerCharacter.BounceBack();
-                SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitBlock, 0.5f, 1);
-            }
-            if (HealthPoint <= 0)
-            {
-                Death();
-            }
-        }
-    }
-
-    public void Damage(int hitPoint, Vector3 hitImpact)
-    {
-        Instantiate(_impactPrefab, hitImpact, Quaternion.identity);
-        if (!IsDead)
-        {
-            HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0));
-            EnemyUI.SetHealthBarValue(HealthPoint);
-            if (!CharacterDefense.IsBlocking)
-            {
-                OnDamage?.Invoke();
-            }
-            else
-            {
-                SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitBlock, 0.5f, 1);
-            }
-            if (HealthPoint <= 0)
-            {
-                Death();
-            }
-        }
-    }
-
-    public void Damage(int hitPoint)
-    {
-        Instantiate(_impactPrefab, transform.position, Quaternion.identity);
-        if (!IsDead)
-        {
-            HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0));
-            EnemyUI.SetHealthBarValue(HealthPoint);
-            if (!CharacterDefense.IsBlocking)
-            {
-                OnDamage?.Invoke();
-            }
-            else
-            {
+                playerCharacter?.BounceBack();
                 SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitBlock, 0.5f, 1);
             }
             if (HealthPoint <= 0)
@@ -146,6 +77,8 @@ public class EnemyCharacter : Character, IDamagable
 
     public void Heal(int value)
     {
-
+        HealthPoint = HealthPoint + value;
+        HealthPoint = Mathf.Clamp(HealthPoint, 0, 100);
+        EnemyUI.SetHealthBarValue(HealthPoint, MaximumHealthPoint);
     }
 }

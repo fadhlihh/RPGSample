@@ -44,7 +44,7 @@ public class ProjectileSpell : MonoBehaviour
         IDamagable damagable = other.GetComponent<IDamagable>();
         if (damagable != null)
         {
-            damagable.Damage(_damage);
+            damagable.Damage(new DamageData(null, _damage, other.ClosestPoint(transform.position)));
         }
         Destroy(gameObject);
     }

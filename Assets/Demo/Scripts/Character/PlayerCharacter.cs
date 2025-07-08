@@ -15,8 +15,6 @@ public class PlayerCharacter : Character, IRolling, IDamagable, IStamina
     [SerializeField]
     private UnityEvent _onCharacterRoll;
     [SerializeField]
-    private float _stamina = 100;
-    [SerializeField]
     private int _staminaRegenSpeed = 1;
 
     private bool _isFirstPerson;
@@ -33,14 +31,19 @@ public class PlayerCharacter : Character, IRolling, IDamagable, IStamina
 
     public bool IsRolling { get; private set; }
 
-    public int HealthPoint { get; private set; } = 100;
+    public int MaximumHealthPoint { get; private set; } = 100;
+    public int HealthPoint { get; private set; }
 
     public bool IsDead { get; private set; }
-    public float Stamina { get => _stamina; }
+    public float MaximumStamina { get; private set; } = 100;
+    public float Stamina { get; private set; }
+
 
     protected override void Awake()
     {
         base.Awake();
+        HealthPoint = MaximumHealthPoint;
+        Stamina = MaximumStamina;
         DirectionalCharacterMovement = CharacterMovement as DirectionalCharacterMovement;
         if (!_weaponEquipmentManager)
         {
@@ -111,9 +114,9 @@ public class PlayerCharacter : Character, IRolling, IDamagable, IStamina
         DirectionalCharacterMovement.IsAbleToMove = true;
     }
 
-    public void Damage(Character instigator, int hitPoint, Vector3 hitImpact)
+    public void Damage(DamageData damageData)
     {
-        EnemyCharacter enemyCharacter = instigator as EnemyCharacter;
+        EnemyCharacter enemyCharacter = damageData.Instigator as EnemyCharacter;
         if (!IsDead)
         {
             if (CharacterDefense.IsParrying)
@@ -123,8 +126,8 @@ public class PlayerCharacter : Character, IRolling, IDamagable, IStamina
             }
             else
             {
-                HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0));
-                HUDManager.Instance.CharacterUI.SetHealthBarValue(HealthPoint);
+                HealthPoint -= (damageData.HitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0));
+                HUDManager.Instance.CharacterUI.SetHealthBarValue(HealthPoint, MaximumHealthPoint);
                 if (!CharacterDefense.IsBlocking)
                 {
                     OnDamage?.Invoke();
@@ -145,44 +148,7 @@ public class PlayerCharacter : Character, IRolling, IDamagable, IStamina
                 }
             }
         }
-        Instantiate(_impactPrefab, hitImpact, Quaternion.identity);
-    }
-
-    public void Damage(Character instigator, int hitPoint)
-    {
-        EnemyCharacter enemyCharacter = instigator as EnemyCharacter;
-        Instantiate(_impactPrefab, transform.position, Quaternion.identity);
-        if (!IsDead)
-        {
-            if (CharacterDefense.IsParrying)
-            {
-                enemyCharacter?.KnockBack();
-                SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitParry, 0.5f, 1);
-            }
-            else
-            {
-                HealthPoint -= HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0)); ;
-                HUDManager.Instance.CharacterUI.SetHealthBarValue(HealthPoint);
-                if (!CharacterDefense.IsBlocking)
-                {
-                    OnDamage?.Invoke();
-                }
-                else
-                {
-                    enemyCharacter.BounceBack();
-                    DecreaseStamina(30);
-                    if (!GetIsStaminaAvailable(30))
-                    {
-                        CharacterDefense.StopBlock();
-                    }
-                    SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitBlock, 0.5f, 1);
-                }
-                if (HealthPoint <= 0)
-                {
-                    Death();
-                }
-            }
-        }
+        Instantiate(_impactPrefab, damageData.HitImpactPosition, Quaternion.identity);
     }
 
     public void Death()
@@ -198,15 +164,15 @@ public class PlayerCharacter : Character, IRolling, IDamagable, IStamina
 
     public void DecreaseStamina(float value)
     {
-        _stamina -= value;
-        _stamina = Mathf.Clamp(_stamina, 0, 100);
+        Stamina -= value;
+        Stamina = Mathf.Clamp(Stamina, 0, 100);
         HUDManager.Instance.CharacterUI.SetStaminaBarValue(Stamina);
     }
 
     public void IncreaseStamina(float value)
     {
-        _stamina += value;
-        _stamina = Mathf.Clamp(_stamina, 0, 100);
+        Stamina += value;
+        Stamina = Mathf.Clamp(Stamina, 0, 100);
         HUDManager.Instance.CharacterUI.SetStaminaBarValue(Stamina);
     }
 
@@ -223,60 +189,6 @@ public class PlayerCharacter : Character, IRolling, IDamagable, IStamina
         return Stamina > value;
     }
 
-    public void Damage(int hitPoint, Vector3 hitImpact)
-    {
-        if (!IsDead)
-        {
-            HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0));
-            HUDManager.Instance.CharacterUI.SetHealthBarValue(HealthPoint);
-            if (!CharacterDefense.IsBlocking)
-            {
-                OnDamage?.Invoke();
-            }
-            else
-            {
-                DecreaseStamina(30);
-                if (!GetIsStaminaAvailable(30))
-                {
-                    CharacterDefense.StopBlock();
-                }
-                SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitBlock, 0.5f, 1);
-            }
-            if (HealthPoint <= 0)
-            {
-                Death();
-            }
-        }
-        Instantiate(_impactPrefab, hitImpact, Quaternion.identity);
-    }
-
-    public void Damage(int hitPoint)
-    {
-        Instantiate(_impactPrefab, transform.position, Quaternion.identity);
-        if (!IsDead)
-        {
-            HealthPoint -= HealthPoint -= (hitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0)); ;
-            HUDManager.Instance.CharacterUI.SetHealthBarValue(HealthPoint);
-            if (!CharacterDefense.IsBlocking)
-            {
-                OnDamage?.Invoke();
-            }
-            else
-            {
-                DecreaseStamina(30);
-                if (!GetIsStaminaAvailable(30))
-                {
-                    CharacterDefense.StopBlock();
-                }
-                SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitBlock, 0.5f, 1);
-            }
-            if (HealthPoint <= 0)
-            {
-                Death();
-            }
-        }
-    }
-
     public void BounceBack()
     {
         OnBounceback?.Invoke();
@@ -286,6 +198,7 @@ public class PlayerCharacter : Character, IRolling, IDamagable, IStamina
     {
         HealthPoint = HealthPoint + value;
         HealthPoint = Mathf.Clamp(HealthPoint, 0, 100);
-        HUDManager.Instance.CharacterUI.SetHealthBarValue(HealthPoint);
+        HUDManager.Instance.CharacterUI.SetHealthBarValue(HealthPoint, MaximumHealthPoint);
     }
+
 }

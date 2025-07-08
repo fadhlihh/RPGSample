@@ -15,9 +15,9 @@ public class EnemyUI : MonoBehaviour
         _enemyUI.transform.LookAt(Camera.main.transform);
     }
 
-    public void SetHealthBarValue(float value)
+    public void SetHealthBarValue(float value, float maxHealthPoint)
     {
-        _healthBar.fillAmount = value / 100;
+        _healthBar.fillAmount = value / maxHealthPoint;
     }
 
     public void ShowTarget()

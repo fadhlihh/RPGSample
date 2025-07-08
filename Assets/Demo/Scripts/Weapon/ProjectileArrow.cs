@@ -34,7 +34,7 @@ public class ProjectileArrow : MonoBehaviour
         IDamagable damagable = other.GetComponent<IDamagable>();
         if (damagable != null)
         {
-            damagable.Damage(_damage, other.ClosestPoint(transform.position));
+            damagable.Damage(new DamageData(null, _damage, other.ClosestPoint(transform.position)));
         }
         Destroy(gameObject);
     }

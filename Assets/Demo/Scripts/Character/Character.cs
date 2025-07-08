@@ -16,7 +16,7 @@ public abstract class Character : MonoBehaviour
 
     public CharacterMovement CharacterMovement { get { return _characterMovement; } }
     public CharacterAnimation CharacterAnimation { get { return _characterAnimation; } }
-    public Transform LookPivot { get; }
+    public Transform LookPivot { get => _lookPivot; }
 
     protected virtual void Awake()
     {

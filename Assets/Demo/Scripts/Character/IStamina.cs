@@ -3,6 +3,7 @@ using UnityEngine;
 public interface IStamina
 {
     public float Stamina { get; }
+    public float MaximumStamina { get; }
 
     public void DecreaseStamina(float value);
 
